@@ -1,5 +1,5 @@
 {
-  "name": "pokemon_project",
+  "name": "NewCoffee",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "web3": "^1.7.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",

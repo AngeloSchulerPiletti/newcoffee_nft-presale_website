@@ -27,7 +27,7 @@ export default defineComponent({
     .info{
         // background-color: #d1a794;
         // border-radius: 15px;
-        background-color: #d8b7a1;
+        background-color: $bege-fraco;
         border: 2px solid #000;
         box-shadow: 3px 3px 8px #00000070;
         position: relative;
@@ -38,13 +38,6 @@ export default defineComponent({
             text-align: justify;
             text-indent: 2em;
             line-height: 1.3em;
-        }
-
-        &::before, &::after{
-          content: "";
-          position: absolute;
-          width: 20px;
-          height: 20px;
         }
     }
 }

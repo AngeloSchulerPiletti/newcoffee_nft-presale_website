@@ -1,0 +1,48 @@
+.flex_c {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.flex_r {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.grid {
+  display: grid;
+}
+
+.btn-1 {
+  border: 3px solid #F0F0F0;
+  font-size: 25px;
+  color: #F0F0F0;
+  font-weight: 400;
+  padding: 8px 16px;
+  position: relative;
+  cursor: pointer;
+}
+.btn-1::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  background-color: #F0F0F0;
+  transition: right 400ms;
+}
+.btn-1:hover::before {
+  right: 0;
+}
+
+.foods {
+  position: absolute;
+  bottom: 0;
+  filter: blur(5px);
+}
+
+.title-1 {
+  font-size: 50px;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -55,7 +55,7 @@ $border: 8px;
 
 .card {
   border-radius: $border;
-  background-color: #f0f0f0;
+  background-color: $white;
   box-shadow: 0 0 12px #000000b0;
 
   img {
@@ -82,11 +82,11 @@ $border: 8px;
       flex-grow: 1;
       padding: 10px 20px 20px 20px;
       text-align: justify;
-      background-color: #9b6f5a;
+      background-color: $bege-forte;
       border-bottom-left-radius: $border;
       border-bottom-right-radius: $border;
       font-weight: 200;
-      color: #f0f0f0;
+      color: $white;
     }
   }
 }

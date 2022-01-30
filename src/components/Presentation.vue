@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <img id="donnut" src="@/assets/images/game-itens/food18.png" />
-    <img id="hotdog" src="@/assets/images/game-itens/food11.png">
+    <img id="donnut" class="foods" src="@/assets/images/game-itens/food18.png" />
+    <img id="hotdog" class="foods" src="@/assets/images/game-itens/food11.png">
     
     <div class="header"><slot></slot></div>
     <div class="video-container">
@@ -13,7 +13,7 @@
       ></video>
       <div class="blur in"></div>
       <div class="info-container in">
-        <h6>Estamos em Pré-venda!</h6>
+        <h6 class="title-1">Estamos em Pré-venda!</h6>
         <button class="btn-1">comprar baú</button>
       </div>
       <div class="mouse-container in">
@@ -36,10 +36,6 @@ export default {
 .container {
   position: relative;
 
-  #donnut, #hotdog{
-    position: absolute;
-    bottom: 0;
-  }
   #donnut {
     left: 0;
     width: 20vw;
@@ -85,8 +81,7 @@ export default {
     .info-container {
       top: 45%;
       left: 10%;
-      color: #f0f0f0;
-      font-size: 50px;
+      color: $white;
       background: radial-gradient(
         closest-side,
         #00000080 30%,
@@ -107,7 +102,7 @@ export default {
       svg:deep() {
         path,
         line {
-          stroke: #f0f0f0;
+          stroke: $white;
         }
       }
     }

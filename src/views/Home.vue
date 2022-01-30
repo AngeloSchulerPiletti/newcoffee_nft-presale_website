@@ -2,10 +2,10 @@
   <div class="home flex_c">
     <presentation><logo-component /></presentation>
     <cards-container />
-    <button class="buy-button" @click="buyModal">comprar baú</button>
+    <button class="buy-button title-1" @click="buyModal">comprar baú</button>
     <team-container />
     <footer-component />
-    <img id="chicken" src="@/assets/images/game-itens/food13.png" />
+    <img id="chicken" class="foods" src="@/assets/images/game-itens/food13.png" />
   </div>
 </template>
 
@@ -43,7 +43,6 @@ export default defineComponent({
     position: relative;
     border: 3px solid #000;
     padding: 6px 20px;
-    font-size: 50px;
     color: transparent;
     cursor: pointer;
     width: fit-content;
@@ -60,7 +59,7 @@ export default defineComponent({
       right: 0;
       bottom: 0;
       transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
-      background-color: #d8b7a1;
+      background-color: $bege-fraco;
     }
 
     &:hover::before {
@@ -69,8 +68,6 @@ export default defineComponent({
   }
 
   #chicken {
-    position: absolute;
-    bottom: 0;
     right: 0;
     width: 28vw;
     height: 28vw;

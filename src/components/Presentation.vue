@@ -33,6 +33,29 @@ export default {
 .container {
   position: relative;
 
+  &::before, &::after{
+    content: "";
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+
+  }
+  &::before{
+    background-image: url("/images/game-images/food18.png");
+    left: -2vw;
+    width: 20vw;
+    height: 20vw;
+    transform: translateY(60%) rotate(30deg);
+  }
+  &::after{
+    background-image: url("/images/game-images/food11.png");
+    right: -5vw;
+    width: 25vw;
+    height: 25vw;
+    transform: translateY(100%) rotate(-20deg);
+
+  }
+
   .header {
     position: absolute;
     z-index: 2;

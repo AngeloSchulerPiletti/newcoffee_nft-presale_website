@@ -20,6 +20,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .card{
+
     h3{
         font-size: 34px;
         margin-bottom: 22px;
@@ -27,6 +28,7 @@ export default defineComponent({
     .info{
         // background-color: #d1a794;
         // border-radius: 15px;
+        background-color: #d8b7a1;
         border: 2px solid #000;
         box-shadow: 3px 3px 8px #00000070;
         position: relative;

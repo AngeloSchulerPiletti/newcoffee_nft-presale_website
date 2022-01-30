@@ -28,7 +28,20 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    margin: 140px 70px 120px 70px;
-    gap: 60px;
+  padding: 140px 70px 120px 70px;
+  gap: 60px;
+  position: relative;
+
+  &::before {
+    content: "";
+    background: url("/images/game-images/food12.png");
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35vw;
+    height: 35vw;
+    transform: translate(-80%, 80%);
+  }
 }
 </style>

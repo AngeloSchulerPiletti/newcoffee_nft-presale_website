@@ -38,5 +38,22 @@ export default {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 40px;
   padding: 150px 60px;
+  position: relative;
+
+  &::before {
+    content: "";
+    background: url("/images/game-images/food13.png");
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28vw;
+    height: 28vw;
+    transform: translate(30%, 16%) rotate(-20deg);
+  }
+
+  *{
+    position: relative;
+  }
 }
 </style>

@@ -4,6 +4,7 @@
     <cards-container />
     <button class="buy-button" @click="buyModal">comprar baú</button>
     <team-container/>
+    <footer-component/>
   </div>
 </template>
 
@@ -13,14 +14,16 @@ import Logo from "@/components/Logo.vue";
 import Presentation from "@/components/Presentation.vue";
 import CardsContainer from "@/components/Instructions/CardsContainer.vue";
 import TeamContainer from "@/components/Team/TeamContainer.vue";
+import Footer from "@/components/Footer.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
-    "Logo-component": Logo,
+    "logo-component": Logo,
     Presentation,
     CardsContainer,
     TeamContainer,
+    "footer-component": Footer,
   },
   methods: {
     buyModal() {

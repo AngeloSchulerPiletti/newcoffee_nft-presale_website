@@ -12,7 +12,7 @@
 </template>
 
 <script>
-export default{}
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -28,9 +28,15 @@ footer {
 
   .developed-by {
     font-weight: 300;
+
     a {
       font-weight: 400;
       color: #d89483;
+    }
+    transition: transform 100ms;
+
+    &:hover {
+      transform: scale(1.025);
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="home flex_c">
-    <presentation><Logo-component /></presentation>
+    <presentation><logo-component /></presentation>
     <cards-container />
     <button class="buy-button" @click="buyModal">comprar baú</button>
     <team-container/>

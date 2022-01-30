@@ -1,22 +1,34 @@
 <template>
-    <div class="container">
-        <card-left/>
-        <card-right/>
-    </div>
+  <div class="container flex_r">
+    <card-component
+      :title="getCardsData[0].title"
+      :paragraph="getCardsData[0].paragraph"
+    />
+    <card-component
+      :title="getCardsData[1].title"
+      :paragraph="getCardsData[1].paragraph"
+    />
+  </div>
 </template>
 
 <script>
-import CardLeft from "./CardLeft.vue";
-import CardRight from "./CardRight.vue";
+import Card from "./Card.vue";
 
 export default {
-    components:{
-        CardLeft,
-        CardRight,
-    }
-}
+  computed: {
+    getCardsData() {
+      return require("@/data/instructionscards.json");
+    },
+  },
+  components: {
+    "card-component": Card,
+  },
+};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.container {
+    margin: 100px 70px;
+    gap: 60px;
+}
 </style>

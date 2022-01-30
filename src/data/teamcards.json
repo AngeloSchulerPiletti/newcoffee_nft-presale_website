@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Roberto Soares",
+        "role": "Software Developer",
+        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
+        "pictureName": "mate-1.jpg",
+        "linkedinUrl": "a",
+        "instagramUrl": null,
+        "twitterUrl": null
+    },
+    {
+        "name": "Rodolfo Figueiredo",
+        "role": "CTO",
+        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
+        "pictureName": "mate-2.jpg",
+        "linkedinUrl": "a",
+        "instagramUrl": "a",
+        "twitterUrl": "a"
+    },
+    {
+        "name": "Austin Texanobril",
+        "role": "Membro fundador",
+        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
+        "pictureName": "mate-3.jpg",
+        "linkedinUrl": "a",
+        "instagramUrl": "a",
+        "twitterUrl": "a"
+    },
+    {
+        "name": "Eduardo Feinster",
+        "role": "Designer Gráfico",
+        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
+        "pictureName": "mate-4.jpg",
+        "linkedinUrl": null,
+        "instagramUrl": null,
+        "twitterUrl": "a"
+    }
+]

@@ -4,7 +4,6 @@
     <div class="video-container">
       <video
         src="@/assets/videos/trailer-example-720.mp4"
-        type="video/mp4"
         autoplay
         loop
         muted

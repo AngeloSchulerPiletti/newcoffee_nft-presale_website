@@ -21,19 +21,29 @@ export default defineComponent({
 <style lang="scss" scoped>
 .card{
     h3{
-        font-size: 30px;
-        margin-bottom: 18px;
+        font-size: 34px;
+        margin-bottom: 22px;
     }
     .info{
-        background-color: #d1a794;
-        border-radius: 15px;
+        // background-color: #d1a794;
+        // border-radius: 15px;
+        border: 2px solid #000;
+        box-shadow: 3px 3px 8px #00000070;
+        position: relative;
         padding: 16px 32px;
 
         p{
-            font-size: 18px;
+            font-size: 19px;
             text-align: justify;
             text-indent: 2em;
             line-height: 1.3em;
+        }
+
+        &::before, &::after{
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 20px;
         }
     }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="container grid">
-    <member-card
+    <team-card
       v-for="(card, index) in getTeamData"
       :key="index"
       :cardData="card"
@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import Card from "@/components/Team/Card.vue";
+import TeamCard from "@/components/Team/TeamCard.vue";
 
 export interface CardInterface {
   name: string;
@@ -28,7 +28,7 @@ export default {
     },
   },
   components: {
-    "member-card": Card,
+    TeamCard,
   },
 };
 </script>

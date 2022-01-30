@@ -1,9 +1,9 @@
 <template>
   <div class="home flex_c">
     <presentation><logo-component /></presentation>
-    <cards-container />
+    <instruction-cards-container />
     <button class="buy-button title-1" @click="buyModal">comprar baú</button>
-    <team-container />
+    <team-cards-container />
     <footer-component />
     <img id="chicken" class="foods" src="@/assets/images/game-itens/food13.png" />
   </div>
@@ -11,20 +11,20 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Logo from "@/components/Logo.vue";
+import LogoComponent from "@/components/LogoComponent.vue";
 import Presentation from "@/components/Presentation.vue";
-import CardsContainer from "@/components/Instructions/CardsContainer.vue";
-import TeamContainer from "@/components/Team/TeamContainer.vue";
-import Footer from "@/components/Footer.vue";
+import InstructionCardsContainer from "@/components/Instructions/InstructionCardsContainer.vue";
+import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 export default defineComponent({
   name: "Home",
   components: {
-    "logo-component": Logo,
+    LogoComponent,
     Presentation,
-    CardsContainer,
-    TeamContainer,
-    "footer-component": Footer,
+    InstructionCardsContainer,
+    TeamCardsContainer,
+    FooterComponent,
   },
   methods: {
     buyModal() {

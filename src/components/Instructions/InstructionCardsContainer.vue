@@ -1,10 +1,10 @@
 <template>
   <div class="container flex_r">
-    <card-component
+    <instructions-card
       :title="getCardsData[0].title"
       :paragraph="getCardsData[0].paragraph"
     />
-    <card-component
+    <instructions-card
       :title="getCardsData[1].title"
       :paragraph="getCardsData[1].paragraph"
     />
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Card from "./Card.vue";
+import InstructionsCard from "./InstructionsCard.vue";
 
 export default {
   computed: {
@@ -22,7 +22,7 @@ export default {
     },
   },
   components: {
-    "card-component": Card,
+    InstructionsCard,
   },
 };
 </script>

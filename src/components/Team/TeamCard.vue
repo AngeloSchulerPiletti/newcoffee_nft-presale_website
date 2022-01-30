@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { PropType } from "@vue/runtime-core";
-import { CardInterface } from "./TeamContainer.vue";
+import { CardInterface } from "./TeamCardsContainer.vue";
 // import InstagramIcon from "@/components/icons/InstagramIcon.vue";
 // import TwitterIcon from "@/components/icons/TwitterIcon.vue";
 // import LinkedinIcon from "@/components/icons/LinkedinIcon.vue";

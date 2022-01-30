@@ -3,8 +3,9 @@
     <presentation><logo-component /></presentation>
     <cards-container />
     <button class="buy-button" @click="buyModal">comprar baú</button>
-    <team-container/>
-    <footer-component/>
+    <team-container />
+    <footer-component />
+    <img id="chicken" src="@/assets/images/game-itens/food13.png" />
   </div>
 </template>
 
@@ -35,6 +36,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home {
+  position: relative;
+  overflow: hidden;
+
   .buy-button {
     position: relative;
     border: 3px solid #000;
@@ -59,9 +63,19 @@ export default defineComponent({
       background-color: #d8b7a1;
     }
 
-    &:hover::before{
+    &:hover::before {
       transform: translate(12px, -12px);
     }
+  }
+
+  #chicken {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28vw;
+    height: 28vw;
+    transform: translate(0, 26%) rotate(-15deg);
+    z-index: -1;
   }
 }
 </style>

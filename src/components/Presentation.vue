@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <img id="donnut" src="@/assets/images/game-itens/food18.png" />
+    <img id="hotdog" src="@/assets/images/game-itens/food11.png">
+    
     <div class="header"><slot></slot></div>
     <div class="video-container">
       <video
@@ -33,27 +36,21 @@ export default {
 .container {
   position: relative;
 
-  &::before, &::after{
-    content: "";
-    background-size: cover;
+  #donnut, #hotdog{
     position: absolute;
     bottom: 0;
-
   }
-  &::before{
-    background-image: url("/images/game-images/food18.png");
-    left: -2vw;
+  #donnut {
+    left: 0;
     width: 20vw;
     height: 20vw;
-    transform: translateY(60%) rotate(30deg);
+    transform: translate(-20%, 55%) rotate(-30deg);
   }
-  &::after{
-    background-image: url("/images/game-images/food11.png");
-    right: -5vw;
-    width: 25vw;
-    height: 25vw;
-    transform: translateY(100%) rotate(-20deg);
-
+  #hotdog {
+    right: 0;
+    width: 30vw;
+    height: 30vw;
+    transform: translate(20%, 55%) rotate(30deg);
   }
 
   .header {

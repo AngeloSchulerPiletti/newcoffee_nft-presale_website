@@ -8,13 +8,11 @@
     />
     <!-- </picture> -->
     <div class="content flex_c">
-      <div class="info">
-        <h6 class="flex_c">
-          {{ cardData?.name }}
-          <span class="role">{{ cardData?.role }}</span>
-        </h6>
-        <p>{{ cardData?.about }}</p>
-      </div>
+      <h6 class="flex_c">
+        {{ cardData?.name }}
+        <span class="role">{{ cardData?.role }}</span>
+      </h6>
+      <p>{{ cardData?.about }}</p>
       <!-- <div class="social grid">
         <a :href="cardData?.linkedinUrl"
           ><linkedin-icon v-if="cardData?.linkedinUrl"
@@ -58,7 +56,7 @@ $border: 8px;
 .card {
   border-radius: $border;
   background-color: #f0f0f0;
-  box-shadow: 0 0 12px #000000B0;
+  box-shadow: 0 0 12px #000000b0;
 
   img {
     border-top-left-radius: $border;
@@ -68,30 +66,27 @@ $border: 8px;
   }
   .content {
     flex-grow: 1;
-    justify-content: space-between;
 
-    .info {
-      // color: #F0F0F0;
-      h6 {
-        text-align: center;
-        padding: 20px 20px 10px 20px;
-        font-size: 24px;
+    h6 {
+      text-align: center;
+      padding: 20px 20px 10px 20px;
+      font-size: 24px;
 
-        .role {
-          font-size: 0.6em;
-          margin-top: 0.4em;
-          font-weight: 500;
-        }
+      .role {
+        font-size: 0.6em;
+        margin-top: 0.4em;
+        font-weight: 500;
       }
-      p {
-        padding: 10px 20px 20px 20px;
-        text-align: justify;
-        background-color: #9b6f5a;
-        border-bottom-left-radius: $border;
-        border-bottom-right-radius: $border;
-        font-weight: 200;
-        color: #F0F0F0;
-      }
+    }
+    p {
+      flex-grow: 1;
+      padding: 10px 20px 20px 20px;
+      text-align: justify;
+      background-color: #9b6f5a;
+      border-bottom-left-radius: $border;
+      border-bottom-right-radius: $border;
+      font-weight: 200;
+      color: #f0f0f0;
     }
   }
 }

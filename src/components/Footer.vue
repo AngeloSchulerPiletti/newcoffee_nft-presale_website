@@ -25,7 +25,6 @@ footer {
   align-items: center;
   gap: 14px;
   padding: 30px;
-  position: relative;
 
   .developed-by {
     font-weight: 300;

@@ -20,7 +20,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .card{
-
     h3{
         font-size: 34px;
         margin-bottom: 22px;

@@ -8,6 +8,7 @@
       :title="getCardsData[1].title"
       :paragraph="getCardsData[1].paragraph"
     />
+    <img id="burguer" src="@/assets/images/game-itens/food12.png">
   </div>
 </template>
 
@@ -32,10 +33,7 @@ export default {
   gap: 60px;
   position: relative;
 
-  &::before {
-    content: "";
-    background: url("/images/game-images/food12.png");
-    background-size: cover;
+  #burguer{
     position: absolute;
     bottom: 0;
     left: 0;

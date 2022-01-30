@@ -3,6 +3,7 @@
     <presentation><Logo-component /></presentation>
     <cards-container />
     <button class="buy-button" @click="buyModal">comprar baú</button>
+    <team-container/>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import { defineComponent } from "vue";
 import Logo from "@/components/Logo.vue";
 import Presentation from "@/components/Presentation.vue";
 import CardsContainer from "@/components/Instructions/CardsContainer.vue";
+import TeamContainer from "@/components/Team/TeamContainer.vue";
 
 export default defineComponent({
   name: "Home",
@@ -18,6 +20,7 @@ export default defineComponent({
     "Logo-component": Logo,
     Presentation,
     CardsContainer,
+    TeamContainer,
   },
   methods: {
     buyModal() {
@@ -38,6 +41,7 @@ export default defineComponent({
     cursor: pointer;
     width: fit-content;
     margin: auto;
+    background: #00000020;
 
     &::before {
       position: absolute;

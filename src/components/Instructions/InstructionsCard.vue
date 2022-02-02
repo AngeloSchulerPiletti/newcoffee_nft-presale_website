@@ -20,13 +20,19 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .card{
+  transition: transform 400ms;
+    &:hover{
+      transform: scale(1.01);
+    }
+    &:active{
+      transform: scale(1.08);
+      cursor: default;
+    }
     h3{
         font-size: 34px;
         margin-bottom: 22px;
     }
     .info{
-        // background-color: #d1a794;
-        // border-radius: 15px;
         background-color: $bege-fraco;
         border: 2px solid #000;
         box-shadow: 3px 3px 8px #00000070;

@@ -1,9 +1,20 @@
 <template>
   <div class="container">
-    <img id="donnut" class="foods" src="@/assets/images/game-itens/food18.png" />
-    <img id="hotdog" class="foods" src="@/assets/images/game-itens/food11.png">
-    
+    <img
+      id="donnut"
+      class="foods"
+      src="@/assets/images/game-itens/food18.png"
+    />
+    <img
+      id="hotdog"
+      class="foods"
+      src="@/assets/images/game-itens/food11.png"
+    />
+
     <div class="header"><slot></slot></div>
+    <div class="right_nav">
+      <a href="#">whitepaper</a>
+    </div>
     <div class="video-container">
       <video
         src="@/assets/videos/trailer-example-720.mp4"
@@ -55,6 +66,17 @@ export default {
     top: 0;
     left: 0;
     right: 0;
+  }
+  .right_nav {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    border-bottom-left-radius: 10px;
+    background-color: $black;
+    color: $white;
+    font-family: "Supermercado One", cursive;
+    padding: 8px 20px;
+    box-shadow: 0 0 10px #000000d0;
   }
   .video-container {
     position: relative;

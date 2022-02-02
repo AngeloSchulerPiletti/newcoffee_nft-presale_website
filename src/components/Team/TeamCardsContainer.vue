@@ -37,7 +37,7 @@ export default {
 .container{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 40px;
-  padding: 150px 60px;
+  padding: 0 60px;
   position: relative;
 }
 </style>

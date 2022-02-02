@@ -69,7 +69,7 @@ $border: 8px;
 
     h6 {
       text-align: center;
-      padding: 20px 20px 10px 20px;
+      padding: 20px;
       font-size: 24px;
 
       .role {
@@ -82,7 +82,7 @@ $border: 8px;
       flex-grow: 1;
       padding: 10px 20px 20px 20px;
       text-align: justify;
-      background-color: $bege-forte;
+      background-color: $black;
       border-bottom-left-radius: $border;
       border-bottom-right-radius: $border;
       font-weight: 200;

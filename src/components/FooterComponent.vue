@@ -24,6 +24,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 14px;
+  margin-top: 180px;
   padding: 30px;
 
   .developed-by {

@@ -1,0 +1,54 @@
+[
+    {
+        "year": 2021,
+        "month": "october",
+        "title": "Foundation",
+        "items": [
+            "Study of markets and technologies",
+            "Project concept",
+            "Core team recruitment",
+            "Farming mechanics concept",
+            "Dev project plan infrastructure",
+            "Finalized economic structure",
+            "Brand"
+        ]
+    },
+    {
+        "year": 2021,
+        "month": "november",
+        "title": "Building",
+        "items": [
+            "Website draft",
+            "Game development",
+            "Game art design and development",
+            "Whitepaper release",
+            "Website version 1.0"
+        ]
+    },
+    {
+        "year": 2021,
+        "month": "december",
+        "title": "Maturing",
+        "items": [
+            "Community building",
+            "Gameplay version 1.0",
+            "Ongoing internal testing"
+        ]
+    },
+    {
+        "year": 2022,
+        "month": "january",
+        "title": "Finishing Realease",
+        "items": [
+            "End of game arts",
+            "Beginning of the dissemination process",
+            "Contract development"
+        ]
+    },
+    {
+        "year": 2022,
+        "month": "february",
+        "title": "Pre sale",
+        "items": null
+    }
+]

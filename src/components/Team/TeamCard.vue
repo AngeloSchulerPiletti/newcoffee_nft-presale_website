@@ -57,6 +57,12 @@ $border: 8px;
   border-radius: $border;
   background-color: $white;
   box-shadow: 0 0 12px #000000b0;
+  cursor: pointer;
+
+  transition: transform 300ms;
+  &:hover{
+    transform: translateY(-20px);
+  }
 
   img {
     border-top-left-radius: $border;

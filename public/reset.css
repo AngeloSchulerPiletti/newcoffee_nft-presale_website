@@ -117,6 +117,7 @@ button {
   background-color: transparent;
   outline: none;
   border: none;
+  cursor: pointer;
 }
 /* HTML5 display-role reset for older browsers */
 article,

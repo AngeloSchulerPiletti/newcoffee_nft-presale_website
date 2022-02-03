@@ -64,7 +64,7 @@ export default defineComponent({
 }
 
 .container {
-  padding: 280px 120px 0 120px;
+  padding: 200px 120px 0 120px;
 
   .images-wrapper {
     max-width: 900px;

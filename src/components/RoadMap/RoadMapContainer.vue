@@ -39,7 +39,7 @@ export default defineComponent({
 .container {
   grid-template-columns: 7fr 3fr;
   padding-left: 200px;
-  margin-bottom: 150px;
+  margin-bottom: 300px;
   position: relative;
 
   .line {

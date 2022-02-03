@@ -3,6 +3,8 @@
     <presentation><logo-component /></presentation>
     <instruction-cards-container />
     <button class="buy-button title-1" @click="buyModal">comprar baú</button>
+    <carousel-images/>
+    <road-map-container/>
     <team-cards-container />
     <footer-component />
     <img id="chicken" class="foods" src="@/assets/images/game-itens/food13.png" />
@@ -14,8 +16,10 @@ import { defineComponent } from "vue";
 import LogoComponent from "@/components/LogoComponent.vue";
 import Presentation from "@/components/Presentation.vue";
 import InstructionCardsContainer from "@/components/Instructions/InstructionCardsContainer.vue";
+import RoadMapContainer from "@/components/RoadMap/RoadMapContainer.vue";
 import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
+import CarouselImages from "@/components/CarouselImages.vue";
 
 export default defineComponent({
   name: "Home",
@@ -23,6 +27,8 @@ export default defineComponent({
     LogoComponent,
     Presentation,
     InstructionCardsContainer,
+    CarouselImages,
+   RoadMapContainer,
     TeamCardsContainer,
     FooterComponent,
   },

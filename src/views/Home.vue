@@ -2,7 +2,7 @@
   <div class="home flex_c">
     <presentation><logo-component /></presentation>
     <instruction-cards-container />
-    <buy-button/>
+    <buy-button :web3="web3Instance" />
     <carousel-images />
     <road-map-container />
     <team-cards-container />
@@ -12,6 +12,7 @@
       class="foods"
       src="@/assets/images/game-itens/food13.png"
     />
+    <buy-modal/>
   </div>
 </template>
 
@@ -25,9 +26,20 @@ import RoadMapContainer from "@/components/RoadMap/RoadMapContainer.vue";
 import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import CarouselImages from "@/components/CarouselImages.vue";
+import Modal from "@/components/BuyModal/Modal.vue";
+import Web3 from "web3";
+
+declare interface HomeData {
+  web3Instance: Web3 | null;
+}
 
 export default defineComponent({
   name: "Home",
+  data(): HomeData {
+    return {
+      web3Instance: null,
+    };
+  },
   components: {
     LogoComponent,
     Presentation,
@@ -37,6 +49,14 @@ export default defineComponent({
     RoadMapContainer,
     TeamCardsContainer,
     FooterComponent,
+    "buy-modal": Modal,
+  },
+  mounted() {
+    this.$store.commit("setHasMetaMask", false);
+    if (window.ethereum && window.ethereum.isMetaMask) {
+      this.$store.commit("setHasMetaMask", true);
+      this.web3Instance = new Web3(window.ethereum);
+    }
   },
 });
 </script>
@@ -44,6 +64,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .home {
   overflow: hidden;
+  position: relative;
 
   #chicken {
     right: 0;

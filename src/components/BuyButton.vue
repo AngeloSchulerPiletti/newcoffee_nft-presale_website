@@ -1,9 +1,16 @@
 <template>
   <div class="container flex_c">
+    <span class="warn" v-if="connection == 'not-available'"
+      >Instale a
+      <a target="_blank" href="https://metamask.io/">MetaMask</a> para
+      prosseguir</span
+    >
     <button :class="`in buy-button title-1 ${connection}`" @click="buyModal">
       comprar baú
     </button>
-    <button :class="`in connect-button ${connection}`">conectar wallet</button>
+    <button @click="connectWallet" :class="`in connect-button ${connection}`">
+      {{ $store.state.walletAddress ? "wallet conectada" : "conectar wallet" }}
+    </button>
   </div>
 </template>
 
@@ -16,38 +23,64 @@ export default defineComponent({
       connection: "not-connected",
     };
   },
+  mounted() {
+    setTimeout(() => {
+      if (!this.hasMetaMask) {
+        this.connection = "not-available";
+        console.log("não tem metamask");
+      }
+    }, 0);
+  },
   methods: {
     buyModal() {
-      this.$store.commit("openModal");
+      this.connection == "connected" ? this.$store.commit("openModal") : null;
     },
+    async connectWallet() {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      this.connection = "not-connected";
+      if (accounts && accounts[0]) {
+        this.$store.commit("setWalletAddress", accounts[0]);
+        this.connection = "connected";
+      }
+    },
+  },
+  computed: {
+    hasMetaMask(): boolean {
+      return this.$store.state.hasMetaMask;
+    },
+  },
+  props: {
+    web3: Object,
   },
 });
 </script>
 
 <style lang="scss" scoped>
-@keyframes negar{
-  0%{
+@keyframes negar {
+  0% {
     transform: translate(0);
   }
-  25%{
-    transform: translate(10px);
+  25% {
+    transform: translate(5%);
   }
-  75%{
-    transform: translate(-10px);
+  75% {
+    transform: translate(-5%);
   }
-  100%{
+  100% {
     transform: translate(0);
   }
 }
 
 @keyframes brief {
-  0%{
+  0% {
     transform: scale(1);
   }
-  50%{
+  50% {
     transform: scale(1.035);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
@@ -81,11 +114,13 @@ export default defineComponent({
     &.connected:hover::before {
       transform: translate(12px, -12px);
     }
-    &.not-connected{
+    &.not-connected,
+    &.not-available {
       cursor: default;
       &:hover {
-      animation: negar 200ms ease 0ms 2 normal both;
-    }}
+        animation: negar 230ms ease 0ms 2 normal both;
+      }
+    }
   }
 
   .connect-button {
@@ -97,8 +132,19 @@ export default defineComponent({
 
     transition: box-shadow 500ms;
 
-    &.not-connected{
+    &.not-connected {
       animation: brief 950ms ease 0ms infinite normal both;
+    }
+    &.not-available {
+      box-shadow: 0 0 8px transparent !important;
+      opacity: 0.8;
+      cursor: default;
+      &:hover {
+        animation: negar 230ms ease 0ms 2 normal both;
+      }
+    }
+    &.connected{
+      cursor: default;
     }
     &:hover {
       box-shadow: 0 0 0 #000000e0;

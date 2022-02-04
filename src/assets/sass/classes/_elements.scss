@@ -1,6 +1,17 @@
+@use "../variables" as *;
+
 .foods{
     position: absolute;
     bottom: 0;
     filter: blur(5px);
     z-index: -1;
+}
+
+.warn{
+    font-style: italic;
+    font-size: 14px;
+    a{
+        color: $bege-forte;
+        font-weight: 600;
+    }
 }

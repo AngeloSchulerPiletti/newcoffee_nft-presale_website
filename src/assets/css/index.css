@@ -42,6 +42,15 @@
   z-index: -1;
 }
 
+.warn {
+  font-style: italic;
+  font-size: 14px;
+}
+.warn a {
+  color: #916753;
+  font-weight: 600;
+}
+
 .title-1 {
   font-size: 50px;
 }

@@ -12,7 +12,7 @@
       class="foods"
       src="@/assets/images/game-itens/food13.png"
     />
-    <buy-modal/>
+    <buy-modal />
   </div>
 </template>
 

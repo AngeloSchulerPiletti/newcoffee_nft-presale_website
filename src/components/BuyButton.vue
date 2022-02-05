@@ -8,7 +8,10 @@
     <button :class="`in buy-button title-1 ${connection}`" @click="buyModal">
       comprar baú
     </button>
-    <button @click="connectWallet" :class="`in connect-button ${connection}`">
+    <button
+      @click="connectWallet"
+      :class="`in shadow-3 connect-button ${connection}`"
+    >
       {{ $store.state.walletAddress ? "wallet conectada" : "conectar wallet" }}
     </button>
   </div>
@@ -128,7 +131,6 @@ export default defineComponent({
     color: $white;
     background-color: #000;
     padding: 5px 12px;
-    box-shadow: 0 0 8px #000000e0;
 
     transition: box-shadow 500ms;
 
@@ -143,7 +145,7 @@ export default defineComponent({
         animation: negar 230ms ease 0ms 2 normal both;
       }
     }
-    &.connected{
+    &.connected {
       cursor: default;
     }
     &:hover {

@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex_c">
+  <footer class="flex_c shadow-3">
     <span class="developed-by"
       >Developed by
       <a href="https://www.linkedin.com/in/angelo-schuler-piletti/"
@@ -18,7 +18,6 @@ export default {};
 <style lang="scss" scoped>
 footer {
   background-color: $black;
-  box-shadow: 0 0 14px #000000d0;
   color: $white;
   font-weight: 200;
   justify-content: center;

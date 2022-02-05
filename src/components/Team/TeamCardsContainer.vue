@@ -1,6 +1,6 @@
 <template>
   <div class="container flex_c">
-    <h3 class="title-1">Meet the Team</h3>
+    <h3 class="shadow-3 title-1 pseudo-2 no-content">Meet the Team</h3>
     <div class="cards-container grid">
       <team-card
         v-for="(card, index) in getTeamData"
@@ -45,8 +45,6 @@ export default {
     border: 3px solid #000;
     width: fit-content;
     padding: 5px 18px;
-    box-shadow: 0 0 10px #00000070;
-    position: relative;
     background-color: $bege-fraco;
     transition: transform 400ms;
     transform-style: preserve-3d;
@@ -64,8 +62,6 @@ export default {
 
     &::before,
     &::after {
-      position: absolute;
-      content: "";
       height: 80%;
       width: 50px;
       border: 4px solid #000;

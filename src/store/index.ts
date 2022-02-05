@@ -1,10 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
 
 export type State = {
-  modalBoolState: boolean,
-  hasMetaMask: boolean,
-  walletAddress: string | null,
-}
+  modalBoolState: boolean;
+  hasMetaMask: boolean;
+  walletAddress: string | null;
+};
 
 export const store = createStore({
   state: {
@@ -13,21 +13,19 @@ export const store = createStore({
     walletAddress: null,
   },
   mutations: {
-    setWalletAddress(state: State, address: string){
+    setWalletAddress(state: State, address: string) {
       state.walletAddress = address;
     },
-    setHasMetaMask(state: State, payload: boolean){
+    setHasMetaMask(state: State, payload: boolean) {
       state.hasMetaMask = payload;
     },
-    openModal(state: State){
+    openModal(state: State) {
       state.modalBoolState = true;
     },
-    closeModal(state: State){
+    closeModal(state: State) {
       state.modalBoolState = false;
     },
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});

@@ -12,7 +12,7 @@
     />
 
     <div class="header"><slot></slot></div>
-    <div class="right_nav">
+    <div class="right_nav shadow-3">
       <a href="#">whitepaper</a>
     </div>
     <div class="video-container">
@@ -76,7 +76,6 @@ export default {
     color: $white;
     font-family: "Supermercado One", cursive;
     padding: 8px 20px;
-    box-shadow: 0 0 10px #000000d0;
   }
   .video-container {
     position: relative;

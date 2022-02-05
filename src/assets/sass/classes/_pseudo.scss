@@ -1,0 +1,19 @@
+
+
+.pseudo-1 {
+  position: relative;
+  &::before {
+    position: absolute;
+  }
+}
+.pseudo-2 {
+    position: relative;
+    &::before, &::after {
+      position: absolute;
+    }
+}
+.no-content{
+    &::before, &::after{
+        content: "";
+    }
+}

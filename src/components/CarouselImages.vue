@@ -1,6 +1,6 @@
 <template>
   <div class="container flex_r">
-    <div class="images-wrapper">
+    <div class="images-wrapper shadow-3 pseudo-1 no-content">
       <transition-group name="fade">
         <img
           :src="`/images/game-prints/${imageName}`"
@@ -65,20 +65,17 @@ export default defineComponent({
 
 .container {
   padding: 200px 120px 0 120px;
+  align-items: flex-end;
 
   .images-wrapper {
     max-width: 900px;
     width: 40vw;
     height: 50vw;
     max-height: 600px;
-    box-shadow: 2px 2px 12px #00000085;
     border: 4px solid #000;
-    position: relative;
     flex-shrink: 0;
 
     &::before {
-      content: "";
-      position: absolute;
       height: 80%;
       bottom: 10%;
       right: -9px;

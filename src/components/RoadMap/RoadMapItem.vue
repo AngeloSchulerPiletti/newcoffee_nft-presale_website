@@ -1,9 +1,9 @@
 <template>
   <div class="item-container flex_c">
-    <h5 class="date">
+    <h5 class="date shadow-3 pseudo-1 no-content">
       {{ `${data.month}, ${data.year}` }}
     </h5>
-    <div v-if="data.title && data.items" class="content">
+    <div v-if="data.title && data.items" class="content shadow-3">
       <h6 class="float-title">{{ data.title }}</h6>
       <ul class="flex_c">
         <li v-for="(event, index) in data.items" :key="index">{{ event }}</li>
@@ -32,17 +32,13 @@ export default defineComponent({
 .item-container {
   transform: translateX(-20px);
   .date {
-    position: relative;
     width: fit-content;
     padding: 8px 18px;
     font-size: 48px;
     outline: 3px solid #000;
     background-color: $bege-fraco;
-    box-shadow: 3px 3px 8px #00000080;
 
     &::before {
-      content: "";
-      position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
@@ -62,7 +58,6 @@ export default defineComponent({
     position: relative;
     z-index: -1;
     background-color: $bege-fraco;
-    box-shadow: 3px 3px 8px #00000070;
 
     .float-title {
       position: absolute;
@@ -80,7 +75,7 @@ export default defineComponent({
       font-weight: 300;
     }
   }
-    .blocked-title {
-    }
+  .blocked-title {
+  }
 }
 </style>

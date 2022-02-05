@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex_c">
+  <div class="card shadow-3 flex_c">
     <!-- <picture> -->
     <!-- <source sizes="" srcset="" type="image/jpg" />  -->
     <img
@@ -56,11 +56,10 @@ $border: 8px;
 .card {
   border-radius: $border;
   background-color: $white;
-  box-shadow: 0 0 12px #000000b0;
   cursor: pointer;
 
   transition: transform 300ms;
-  &:hover{
+  &:hover {
     transform: translateY(-20px);
   }
 

@@ -7,17 +7,20 @@
         <div class="cards-container grid">
           <h2 class="title-1 shadow-3 pseudo-2 no-content">Escolha seu Baú</h2>
           <bau-card
-            class="bau-card"
+            @choosed="choosed"
             v-for="data in bauData"
             :key="data.imageName"
             :imageName="data.imageName"
             :price="data.price"
+            :choosedBau="choosedBau"
           />
         </div>
         <div class="actions grid">
-          <button class="button-back shadow-3">back</button>
-          <button class="button-next shadow-3 pseudo-2 no-content">next</button>
-          <button class="button-cancel shadow-3" @click="closeModal($event)">cancel</button>
+          <button :class="`button-back shadow-3 disabled-${backDisabled}`">back</button>
+          <button :class="`button-next shadow-3 disabled-${bauNotSelected} pseudo-2 no-content`">next</button>
+          <button class="button-cancel shadow-3" @click="closeModal($event)">
+            cancel
+          </button>
         </div>
       </div>
     </div>
@@ -38,12 +41,20 @@ export default defineComponent({
     return {
       isOpening: false,
       bauData: null as [BauCards] | null,
+      stage: 0,
+      choosedBau: "0,00",
     };
   },
   mounted() {
     this.bauData = require("@/data/baucards.json");
   },
   computed: {
+    backDisabled(){
+      return this.stage == 0;
+    },
+    bauNotSelected(){
+      return this.choosedBau == "0,00";
+    },
     isShow() {
       setTimeout(() => {
         this.isOpening = this.$store.state.modalBoolState;
@@ -52,8 +63,14 @@ export default defineComponent({
     },
   },
   methods: {
+    choosed(price: string) {
+      this.choosedBau = price;
+    },
     closeModal(event: any) {
-      if (event.target.classList.contains("container") || event.target.classList.contains("button-cancel")) {
+      if (
+        event.target.classList.contains("container") ||
+        event.target.classList.contains("button-cancel")
+      ) {
         this.isOpening = false;
         setTimeout(() => {
           this.$store.commit("closeModal");
@@ -173,10 +190,9 @@ export default defineComponent({
         height: fit-content;
         transition: opacity 200ms;
 
-        &:hover{
-            opacity: 0.9;
+        &:hover {
+          opacity: 0.9;
         }
-
       }
 
       .button-next {
@@ -187,12 +203,13 @@ export default defineComponent({
         padding: 3px 14px;
         transition: box-shadow 260ms, transform 150ms;
 
-        &:hover{
-            box-shadow: 0 0 12px transparent !important;
-            transform: scale(0.98);
-            &::before, &::after{
-                opacity: 0;
-            }
+        &:hover {
+          box-shadow: 0 0 12px transparent !important;
+          transform: scale(0.98);
+          &::before,
+          &::after {
+            opacity: 0;
+          }
         }
 
         &::before,
@@ -209,6 +226,11 @@ export default defineComponent({
         &::after {
           right: -4px;
         }
+      }
+
+      .disabled-true{
+        cursor: default;
+        opacity: 0.8 !important;
       }
     }
   }

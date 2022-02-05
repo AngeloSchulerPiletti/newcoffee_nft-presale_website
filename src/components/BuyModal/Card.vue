@@ -1,6 +1,6 @@
 <template>
-  <div class="card-container">
-    <div class="card-bau">
+  <div class="card-container" @click="choosed">
+    <div :class="choosedBau == price ? 'card-bau choosed' : 'card-bau'">
       <img :src="`/images/game-images/${imageName}`" alt="Baú do jogo" />
     </div>
     <p class="price"><span class="currency">U$</span>{{ price }}</p>
@@ -9,9 +9,15 @@
 
 <script>
 export default {
+  methods: {
+    choosed() {
+      this.$emit("choosed", this.price);
+    },
+  },
   props: {
     price: String,
     imageName: String,
+    choosedBau: String,
   },
 };
 </script>
@@ -20,10 +26,10 @@ export default {
 .card-container {
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     .card-bau {
-        transform: scale(1.04);
-    }   
+      transform: scale(1.04);
+    }
   }
 
   .card-bau {
@@ -33,6 +39,13 @@ export default {
       filter: drop-shadow(0 0 8px #000000d0);
     }
     transition: transform 200ms;
+  }
+  .choosed {
+    transform: scale(1.04);
+    img {
+      -webkit-filter: drop-shadow(0 0 8px #ffffff);
+      filter: drop-shadow(0 0 18px #ffffff);
+    }
   }
   .price {
     font-family: "Supermercado One", cursive;

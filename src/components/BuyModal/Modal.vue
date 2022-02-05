@@ -7,7 +7,7 @@
         <h2 class="title-1 shadow-3 pseudo-2 no-content">
           {{ titles[stage] }}
         </h2>
-        <div v-show="stage == 0" class=" cards-container grid">
+        <div v-show="stage == 0" class="cards-container grid">
           <bau-card
             @choosed="choosed"
             v-for="data in bauData"
@@ -18,25 +18,32 @@
             :choosedBau="choosedBau.price"
           />
         </div>
-        <div v-show="stage == 1" class=" payment-container grid">
-          <div class="amount">
+        <div v-show="stage == 1" class="payment-container grid">
+          <div class="flex_c amount">
             <label for="amount">Amount</label>
-            <input type="number" id="amount" />
+            <input
+              type="number"
+              step="1"
+              min="1"
+              max="100"
+              v-model="amount"
+              id="amount"
+            />
           </div>
-          <div class="selected-bau">
+          <div class="flex_c selected-bau">
             <label>selected bau</label>
-            <p>{{choosedBau.type}}</p>
+            <p>{{ choosedBau.type }}</p>
           </div>
-          <div class="total">
-            <p>Total <span>U$ XX,XX</span></p>
+          <div>
+            <label>Total: <span>U$ XX,XX</span></label>
           </div>
-          <div class="connected-wallet">
+          <div class="flex_c connected-wallet">
             <label>Connected Wallet</label>
-            <p>{{$store.state.walletAddress}}</p>
+            <p>{{ $store.state.walletAddress }}</p>
           </div>
-          <div class="newcoffee-wallet">
+          <div class="flex_c newcoffee-wallet">
             <label>NewCoffee Wallet</label>
-            <p>{{$store.state.newcoffeeAddress}}</p>
+            <p>{{ $store.state.newcoffeeAddress }}</p>
           </div>
         </div>
         <div class="actions grid">
@@ -47,7 +54,7 @@
             back
           </button>
           <button
-            :class="`button-next shadow-3 disabled-${bauNotSelected || lastStage} pseudo-2 no-content`"
+            :class="`button-next shadow-3 disabled-${bauNotSelected} pseudo-2 no-content`"
             @click="goNext"
           >
             next
@@ -77,6 +84,7 @@ export default defineComponent({
       isOpening: false,
       bauData: null as [BauCards] | null,
       stage: 0,
+      amount: 1,
       choosedBau: {
         type: "",
         price: "0,00",
@@ -92,12 +100,13 @@ export default defineComponent({
       return this.stage == 0;
     },
     bauNotSelected() {
-      return this.choosedBau == "0,00";
+      return this.choosedBau.price == "0,00";
     },
-    lastStage(){
+    lastStage() {
       return this.stage == 1;
     },
     isShow() {
+      // return true;
       setTimeout(() => {
         this.isOpening = this.$store.state.modalBoolState;
       }, 0);
@@ -166,7 +175,7 @@ export default defineComponent({
     padding: 36px 60px;
     box-sizing: border-box;
     border: 3px solid #000;
-      justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
     background-color: $bege-fraco;
 
@@ -229,12 +238,40 @@ export default defineComponent({
         "a b c"
         "d d d"
         "e e e";
-      
-      .connected-wallet{
+      width: 100%;
+      gap: 20px;
+
+      .connected-wallet {
         grid-area: d;
       }
-      .newcoffee-wallet{
+      .newcoffee-wallet {
         grid-area: e;
+      }
+      label {
+        font-family: "Supermercado One", cursive;
+        font-size: 23px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 19px;
+      }
+      input {
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid #000;
+        font-size: 20px;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+          opacity: none;
+          display: none;
+        }
+        &:focus,
+        &:active {
+          outline: none;
+        }
       }
     }
 

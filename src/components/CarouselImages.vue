@@ -3,10 +3,28 @@
     <div class="images-wrapper shadow-3 pseudo-1 no-content">
       <transition-group name="fade">
         <img
-          :src="`/images/game-prints/${imageName}`"
+          key="0"
+          v-show="imageToShow == 0"
+          src="/images/game-prints/print-cafe-1.png"
           alt="Imagem do jogo"
-          v-for="imageName in imagesCarousel"
-          :key="imageName"
+        />
+        <img
+          key="1"
+          v-show="imageToShow == 1"
+          src="/images/game-prints/print-mineracao-1.png"
+          alt="Imagem do jogo"
+        />
+        <img
+          key="2"
+          v-show="imageToShow == 2"
+          src="/images/game-prints/print-2.png"
+          alt="Imagem do jogo"
+        />
+        <img
+          key="3"
+          v-show="imageToShow == 3"
+          src="/images/game-prints/print-cafe-2.png"
+          alt="Imagem do jogo"
         />
       </transition-group>
     </div>
@@ -28,13 +46,7 @@ interface CardInterface {
 export default defineComponent({
   data() {
     return {
-      imagesCarousel: ["print-cafe-1.png"],
-      imagesName: [
-        "print-cafe-1.png",
-        "print-mineracao-1.png",
-        "print-2.png",
-        "print-cafe-2.png",
-      ],
+      imageToShow: 0,
     };
   },
   computed: {
@@ -43,11 +55,8 @@ export default defineComponent({
     },
   },
   mounted() {
-    const maxIndex = this.imagesName.length - 1;
-    var counterActual = 0;
     setInterval(() => {
-      counterActual += counterActual == maxIndex ? -maxIndex : 1;
-      this.imagesCarousel[0] = this.imagesName[counterActual];
+      this.imageToShow += this.imageToShow == 3 ? -3 : 1;
     }, 2800);
   },
 });
@@ -58,8 +67,8 @@ export default defineComponent({
 .fade-leave-active {
   transition: opacity 0.2s;
 }
-.fade-enter,
-.fade-leave-active {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 

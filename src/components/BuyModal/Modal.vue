@@ -4,20 +4,54 @@
       <div
         :class="`modal shadow-3 flex_c pseudo-2 no-content opening-${isOpening}`"
       >
-        <div class="cards-container grid">
-          <h2 class="title-1 shadow-3 pseudo-2 no-content">Escolha seu Baú</h2>
+        <h2 class="title-1 shadow-3 pseudo-2 no-content">
+          {{ titles[stage] }}
+        </h2>
+        <div v-show="stage == 0" class=" cards-container grid">
           <bau-card
             @choosed="choosed"
             v-for="data in bauData"
             :key="data.imageName"
             :imageName="data.imageName"
             :price="data.price"
-            :choosedBau="choosedBau"
+            :type="data.type"
+            :choosedBau="choosedBau.price"
           />
         </div>
+        <div v-show="stage == 1" class=" payment-container grid">
+          <div class="amount">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" />
+          </div>
+          <div class="selected-bau">
+            <label>selected bau</label>
+            <p>{{choosedBau.type}}</p>
+          </div>
+          <div class="total">
+            <p>Total <span>U$ XX,XX</span></p>
+          </div>
+          <div class="connected-wallet">
+            <label>Connected Wallet</label>
+            <p>{{$store.state.walletAddress}}</p>
+          </div>
+          <div class="newcoffee-wallet">
+            <label>NewCoffee Wallet</label>
+            <p>{{$store.state.newcoffeeAddress}}</p>
+          </div>
+        </div>
         <div class="actions grid">
-          <button :class="`button-back shadow-3 disabled-${backDisabled}`">back</button>
-          <button :class="`button-next shadow-3 disabled-${bauNotSelected} pseudo-2 no-content`">next</button>
+          <button
+            :class="`button-back shadow-3 disabled-${backDisabled}`"
+            @click="goBack"
+          >
+            back
+          </button>
+          <button
+            :class="`button-next shadow-3 disabled-${bauNotSelected || lastStage} pseudo-2 no-content`"
+            @click="goNext"
+          >
+            next
+          </button>
           <button class="button-cancel shadow-3" @click="closeModal($event)">
             cancel
           </button>
@@ -34,6 +68,7 @@ import Card from "./Card.vue";
 declare interface BauCards {
   imageName: string;
   price: string;
+  type: string;
 }
 
 export default defineComponent({
@@ -42,18 +77,25 @@ export default defineComponent({
       isOpening: false,
       bauData: null as [BauCards] | null,
       stage: 0,
-      choosedBau: "0,00",
+      choosedBau: {
+        type: "",
+        price: "0,00",
+      },
+      titles: ["Choose your chest", "Checkout"],
     };
   },
   mounted() {
     this.bauData = require("@/data/baucards.json");
   },
   computed: {
-    backDisabled(){
+    backDisabled() {
       return this.stage == 0;
     },
-    bauNotSelected(){
+    bauNotSelected() {
       return this.choosedBau == "0,00";
+    },
+    lastStage(){
+      return this.stage == 1;
     },
     isShow() {
       setTimeout(() => {
@@ -63,8 +105,19 @@ export default defineComponent({
     },
   },
   methods: {
-    choosed(price: string) {
-      this.choosedBau = price;
+    goNext() {
+      if (!this.bauNotSelected && !this.lastStage) {
+        this.stage++;
+      }
+    },
+    goBack() {
+      if (this.stage != 0) {
+        this.stage--;
+      }
+    },
+    choosed([price, type]: [string, string]) {
+      this.choosedBau.price = price;
+      this.choosedBau.type = type;
     },
     closeModal(event: any) {
       if (
@@ -113,6 +166,8 @@ export default defineComponent({
     padding: 36px 60px;
     box-sizing: border-box;
     border: 3px solid #000;
+      justify-content: space-between;
+    align-items: center;
     background-color: $bege-fraco;
 
     &::before,
@@ -142,36 +197,44 @@ export default defineComponent({
       }
     }
 
+    h2 {
+      background-color: #000;
+      color: $white;
+      width: fit-content;
+      padding: 8px 20px;
+
+      &::before,
+      &::after {
+        width: 80%;
+        height: 8px;
+        left: 10%;
+        border: 2px solid #000;
+      }
+      &::before {
+        top: -6px;
+      }
+      &::after {
+        bottom: -6px;
+      }
+    }
+
     .cards-container {
-      flex-grow: 1;
-      grid-template-areas:
-        "a a a"
-        "b c d";
       grid-template-columns: 5fr 6fr 5fr;
       grid-auto-rows: min-content min-content;
-      justify-items: center;
       gap: 60px;
+    }
 
-      h2 {
-        background-color: #000;
-        color: $white;
-        width: fit-content;
-        padding: 8px 20px;
-        grid-area: a;
-
-        &::before,
-        &::after {
-          width: 80%;
-          height: 8px;
-          left: 10%;
-          border: 2px solid #000;
-        }
-        &::before {
-          top: -6px;
-        }
-        &::after {
-          bottom: -6px;
-        }
+    .payment-container {
+      grid-template-areas:
+        "a b c"
+        "d d d"
+        "e e e";
+      
+      .connected-wallet{
+        grid-area: d;
+      }
+      .newcoffee-wallet{
+        grid-area: e;
       }
     }
 
@@ -228,7 +291,7 @@ export default defineComponent({
         }
       }
 
-      .disabled-true{
+      .disabled-true {
         cursor: default;
         opacity: 0.8 !important;
       }

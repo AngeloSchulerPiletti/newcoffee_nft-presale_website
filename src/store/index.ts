@@ -4,6 +4,7 @@ export type State = {
   modalBoolState: boolean;
   hasMetaMask: boolean;
   walletAddress: string | null;
+  newcoffeeAddress: string;
 };
 
 export const store = createStore({
@@ -11,6 +12,7 @@ export const store = createStore({
     modalBoolState: false,
     hasMetaMask: false,
     walletAddress: null,
+    newcoffeeAddress: "0xc82c591e93245f2425079F63CE711bD1864248EF",
   },
   mutations: {
     setWalletAddress(state: State, address: string) {

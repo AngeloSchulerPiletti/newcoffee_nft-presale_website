@@ -1,5 +1,6 @@
 <template>
-  <div class="card-container" @click="choosed">
+  <div class="card-container flex_c" @click="choosed">
+    <h6 class="type">{{ type }}</h6>
     <div :class="choosedBau == price ? 'card-bau choosed' : 'card-bau'">
       <img :src="`/images/game-images/${imageName}`" alt="Baú do jogo" />
     </div>
@@ -11,13 +12,14 @@
 export default {
   methods: {
     choosed() {
-      this.$emit("choosed", this.price);
+      this.$emit("choosed", [this.price, this.type]);
     },
   },
   props: {
     price: String,
     imageName: String,
     choosedBau: String,
+    type: String,
   },
 };
 </script>
@@ -25,11 +27,17 @@ export default {
 <style lang="scss" scoped>
 .card-container {
   cursor: pointer;
+  align-items: center;
+  gap: 12px;
 
   &:hover {
     .card-bau {
       transform: scale(1.04);
     }
+  }
+
+  .type{
+    font-size: 20px;
   }
 
   .card-bau {
@@ -50,10 +58,6 @@ export default {
   .price {
     font-family: "Supermercado One", cursive;
     font-size: 35px;
-    // border: 3px solid #000;
-    width: fit-content;
-    margin: 12px auto 0 auto;
-    padding: 2px 10px;
 
     .currency {
       font-weight: 500;

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="isShow" @click="closeModal($event)" class="container flex_c">
+    <div v-show="isShow" @click="closeModal($event)" class="container flex_c">
       <div
         :class="`modal shadow-3 flex_c pseudo-2 no-content opening-${isOpening}`"
       >
@@ -72,8 +72,8 @@ export default defineComponent({
 .fade-leave-active {
   transition: opacity 0.3s;
 }
-.fade-enter,
-.fade-leave-active {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 

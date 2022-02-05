@@ -5,7 +5,7 @@
       <a target="_blank" href="https://metamask.io/">MetaMask</a> para
       prosseguir</span
     >
-    <button :class="`in buy-button title-1 ${connection}`" @click="buyModal">
+    <button :class="`in buy-button pseudo-1 title-1 ${connection}`" @click="buyModal">
       comprar baú
     </button>
     <button
@@ -95,14 +95,12 @@ export default defineComponent({
     width: fit-content;
   }
   .buy-button {
-    position: relative;
     border: 3px solid #000;
     padding: 6px 20px;
     color: transparent;
     background: #00000020;
 
     &::before {
-      position: absolute;
       content: "comprar baú";
       color: #000;
       outline: 3px solid #000;

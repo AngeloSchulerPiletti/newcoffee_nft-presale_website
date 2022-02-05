@@ -6,6 +6,7 @@
     <carousel-images />
     <road-map-container />
     <team-cards-container />
+    <contact-the-team />
     <footer-component />
     <img
       id="chicken"
@@ -24,6 +25,7 @@ import InstructionCardsContainer from "@/components/Instructions/InstructionCard
 import BuyButton from "@/components/BuyButton.vue";
 import RoadMapContainer from "@/components/RoadMap/RoadMapContainer.vue";
 import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
+import ContactTheTeam from "@/components/ContactTheTeam.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import CarouselImages from "@/components/CarouselImages.vue";
 import Modal from "@/components/BuyModal/Modal.vue";
@@ -48,6 +50,7 @@ export default defineComponent({
     CarouselImages,
     RoadMapContainer,
     TeamCardsContainer,
+    ContactTheTeam,
     FooterComponent,
     "buy-modal": Modal,
   },

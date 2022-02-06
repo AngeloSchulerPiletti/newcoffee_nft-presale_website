@@ -25,4 +25,13 @@ header {
     border-bottom-right-radius: 12px;
   }
 }
+
+@media (max-width: 500px) {
+  header {
+    justify-content: flex-start;
+    img {
+      border-bottom-left-radius: 0;
+    }
+  }
+}
 </style>

@@ -1,6 +1,11 @@
 <template>
   <div class="container flex_c">
-    <h3 id="team-title" :class="`shadow-3 title-1 pseudo-2 no-content anim-${anim}`">Meet the Team</h3>
+    <h3
+      id="team-title"
+      :class="`shadow-3 title-1 pseudo-2 no-content anim-${anim}`"
+    >
+      Meet the Team
+    </h3>
     <div class="cards-container grid">
       <team-card
         v-for="(card, index) in getTeamData"
@@ -30,7 +35,7 @@ export default {
       return require("@/data/teamcards.json");
     },
   },
-  props:{
+  props: {
     anim: Boolean,
   },
   components: {
@@ -53,7 +58,6 @@ export default {
     transform-style: preserve-3d;
 
     &.anim-true {
-      // Remove it and change to scroll event
       transform: scale(1.03);
       &::before {
         left: -40px;
@@ -87,6 +91,67 @@ export default {
     gap: 40px;
     padding: 0 60px;
     position: relative;
+  }
+}
+
+@media (max-width: 1150px) {
+  .container {
+    .cards-container {
+      gap: 30px;
+      padding: 0 30px;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .container {
+    .cards-container {
+      grid-template-columns: 40vw 40vw;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    .cards-container {
+      grid-template-columns: 44vw 44vw;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    .cards-container {
+      gap: 12px;
+      grid-template-columns: 46vw 46vw;
+    }
+    h3 {
+      padding: 3px 12px;
+
+      &::before,
+      &::after {
+        border: 2px solid #000;
+      }
+      &.anim-true {
+        transform: scale(1.03);
+        &::before {
+          left: -20px;
+        }
+        &::after {
+          right: -20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    .cards-container {
+      gap: 26px;
+      grid-template-columns: 60vw;
+    }
   }
 }
 </style>

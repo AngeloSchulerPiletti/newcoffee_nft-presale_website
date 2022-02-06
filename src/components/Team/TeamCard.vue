@@ -1,29 +1,15 @@
 <template>
   <div class="card shadow-3 flex_c">
-    <!-- <picture> -->
-    <!-- <source sizes="" srcset="" type="image/jpg" />  -->
     <img
       :src="`./images/team/${cardData?.pictureName}`"
       :alt="`foto de ${cardData?.name}`"
     />
-    <!-- </picture> -->
     <div class="content flex_c">
       <h6 class="flex_c">
         {{ cardData?.name }}
         <span class="role">{{ cardData?.role }}</span>
       </h6>
       <p>{{ cardData?.about }}</p>
-      <!-- <div class="social grid">
-        <a :href="cardData?.linkedinUrl"
-          ><linkedin-icon v-if="cardData?.linkedinUrl"
-        /></a>
-        <a :href="cardData?.instagramUrl"
-          ><instagram-icon v-if="cardData?.instagramUrl"
-        /></a>
-        <a :href="cardData?.twitterUrl"
-          ><twitter-icon v-if="cardData?.twitterUrl"
-        /></a>
-      </div> -->
     </div>
   </div>
 </template>
@@ -31,9 +17,6 @@
 <script lang="ts">
 import { PropType } from "@vue/runtime-core";
 import { CardInterface } from "./TeamCardsContainer.vue";
-// import InstagramIcon from "@/components/icons/InstagramIcon.vue";
-// import TwitterIcon from "@/components/icons/TwitterIcon.vue";
-// import LinkedinIcon from "@/components/icons/LinkedinIcon.vue";
 
 export default {
   props: {
@@ -41,11 +24,6 @@ export default {
       type: Object as PropType<CardInterface>,
       required: true,
     },
-  },
-  components: {
-    // InstagramIcon,
-    // TwitterIcon,
-    // LinkedinIcon,
   },
 };
 </script>
@@ -57,11 +35,6 @@ $border: 8px;
   border-radius: $border;
   background-color: $white;
   cursor: default;
-
-  // transition: transform 300ms;
-  // &:hover {
-  //   transform: translateY(-20px);
-  // }
 
   img {
     border-top-left-radius: $border;

@@ -56,12 +56,12 @@ $border: 8px;
 .card {
   border-radius: $border;
   background-color: $white;
-  cursor: pointer;
+  cursor: default;
 
-  transition: transform 300ms;
-  &:hover {
-    transform: translateY(-20px);
-  }
+  // transition: transform 300ms;
+  // &:hover {
+  //   transform: translateY(-20px);
+  // }
 
   img {
     border-top-left-radius: $border;

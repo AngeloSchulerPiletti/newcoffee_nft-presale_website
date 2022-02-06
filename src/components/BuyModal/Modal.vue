@@ -66,6 +66,14 @@
             cancel
           </button>
         </div>
+        <span class="warn advice"
+          >don't forget to connect your metamask to
+          <a
+            target="_blank"
+            href="https://academy.binance.com/en/articles/connecting-metamask-to-binance-smart-chain"
+            >binance smart chain</a
+          ></span
+        >
       </div>
     </div>
   </transition>
@@ -406,6 +414,12 @@ export default defineComponent({
         cursor: default;
         opacity: 0.8 !important;
       }
+    }
+    .advice {
+      position: absolute;
+      font-size: 12px;
+      bottom: 3px;
+      left: 10px;
     }
   }
 }

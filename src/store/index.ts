@@ -5,7 +5,7 @@ export type State = {
   hasMetaMask: boolean;
   walletAddress: string | null;
   newcoffeeAddress: string;
-  feedbacks: [{description: String, isError: boolean}] | Array<Object>;
+  feedbacks: [{ description: String; isError: boolean }] | Array<Object>;
 };
 
 export const store = createStore({
@@ -29,12 +29,13 @@ export const store = createStore({
     closeModal(state: State) {
       state.modalBoolState = false;
     },
-    addFeedback(state:State, feedback: {description: String, isError: boolean}){
+    addFeedback(
+      state: State,
+      feedback: { description: String; isError: boolean }
+    ) {
       state.feedbacks.push(feedback);
     },
-    removeFeedback(state: State, index: number){
-      console.log("UH");
-      
+    removeFeedback(state: State, index: number) {
       state.feedbacks.splice(index, 1);
     },
   },

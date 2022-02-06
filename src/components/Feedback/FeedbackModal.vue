@@ -20,13 +20,13 @@ export default {
   },
   mounted() {
     this.closeTimeout = setTimeout(() => {
-      this.$store.commit("removeFeedback", this.index);
-    }, 6000);
+      this.$store.commit("removeFeedback", 0);
+    }, 6000 * (this.index + 1));
   },
   methods: {
     close() {
       clearTimeout(this.closeTimeout);
-      this.$store.commit("removeFeedback", this.index);
+      this.$store.commit("removeFeedback", 0);
     },
   },
   props: {

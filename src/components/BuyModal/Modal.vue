@@ -7,7 +7,10 @@
         <h2 class="title-1 shadow-3 pseudo-2 no-content">
           {{ titles[stage] }}
         </h2>
-        <div v-show="stage == 0" class="cards-container grid">
+        <div
+          v-show="stage == 0 && transactionLoading == false"
+          class="cards-container grid"
+        >
           <bau-card
             @choosed="choosed"
             v-for="data in bauData"
@@ -18,7 +21,10 @@
             :choosedBau="choosedBau.price"
           />
         </div>
-        <div v-show="stage == 1" class="payment-container grid">
+        <div
+          v-show="stage == 1 && transactionLoading == false"
+          class="payment-container grid"
+        >
           <div class="flex_c amount">
             <label for="amount">Amount</label>
             <input
@@ -55,6 +61,10 @@
               change it.
             </p>
           </div>
+        </div>
+        <div v-show="transactionLoading" class="loading flex_c">
+          <div class="loader"><img src="/favicon.png" /></div>
+          <p class="warn">{{ loadingPhrases[loadingPhraseIndex] }}</p>
         </div>
         <div class="actions grid">
           <button
@@ -115,6 +125,15 @@ export default defineComponent({
       titles: ["Choose your chest", "Checkout"],
       apiError: false,
       transactionLoading: false,
+      loadingPhraseInterval: null as any,
+      loadingPhrases: [
+        "Sending transaction",
+        "Listening to Globs Globs",
+        "Taking some rest",
+        "Almost there...",
+        "Wait, Globs Globs are back!",
+      ],
+      loadingPhraseIndex: 0,
     };
   },
   mounted() {
@@ -138,6 +157,18 @@ export default defineComponent({
     },
   },
   watch: {
+    transactionLoading(newV) {
+      if (newV) {
+        this.loadingPhraseInterval = setInterval(() => {
+          this.loadingPhraseIndex +=
+            this.loadingPhraseIndex == this.loadingPhrases.length
+              ? -this.loadingPhrases.length
+              : 1;
+        }, 3500);
+      } else {
+        clearInterval(this.loadingPhraseInterval);
+      }
+    },
     stage(newV) {
       this.apiError = false;
       if (newV == 1) {
@@ -221,6 +252,7 @@ export default defineComponent({
       if (event === true || event.target.classList.contains("container")) {
         this.isOpening = false;
         this.apiError = false;
+        this.transactionLoading = false;
         setTimeout(() => {
           this.$store.commit("closeModal");
         }, 410);
@@ -395,6 +427,35 @@ export default defineComponent({
         &:active {
           outline: none;
         }
+      }
+    }
+
+    @keyframes brief {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.035);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .loading {
+      width: 80%;
+      gap: 30px;
+      align-items: center;
+      .loader {
+        img {
+          width: 120px;
+          opacity: 0.8;
+          animation: brief 950ms ease 0ms infinite normal both;
+        }
+      }
+      p {
+        font-size: 18px;
+        font-weight: 300;
       }
     }
 

@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="feedback" tag="div" class="container">
+  <transition-group name="feedback" tag="div" class="container flex_c">
     <feedback-modal
       v-for="(feedback, index) in getFeedbacks"
       :key="index"
@@ -39,5 +39,6 @@ export default {
   z-index: 100000;
   top: 40px;
   right: 0;
+  gap: 20px;
 }
 </style>

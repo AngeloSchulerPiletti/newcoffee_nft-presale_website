@@ -73,14 +73,15 @@ export default defineComponent({
 }
 
 .container {
-  padding: 200px 120px 0 120px;
+  padding: 200px 165px 0 120px;
+  gap: 50px;
   align-items: flex-end;
 
   .images-wrapper {
-    max-width: 900px;
-    width: 40vw;
+    max-width: 1000px;
+    width: 45vw;
     height: 50vw;
-    max-height: 600px;
+    max-height: 80vh;
     border: 4px solid #000;
     flex-shrink: 0;
 
@@ -106,7 +107,6 @@ export default defineComponent({
     }
   }
   .content {
-    padding: 45px;
     gap: 10px;
     justify-content: flex-end;
 
@@ -118,6 +118,53 @@ export default defineComponent({
       line-height: 1.15em;
       text-indent: 1em;
       text-align: justify;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .container {
+    padding: 200px 45px 0 45px;
+  }
+}
+@media (max-width: 890px) {
+  .container {
+    padding: 200px 25px 0 25px;
+    .images-wrapper {
+      height: 80vh;
+    }
+    .content {
+      h3 {
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding: 200px 25px 0 25px;
+    justify-content: center;
+    .images-wrapper {
+      height: 80vh;
+      width: 80vw;
+    }
+    .content {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 200px 15px 0 15px;
+    .images-wrapper {
+      max-height: 90vh;
+      height: 90vh;
+      width: 90vw;
     }
   }
 }

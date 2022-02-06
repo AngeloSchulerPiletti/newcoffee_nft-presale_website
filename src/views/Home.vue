@@ -13,6 +13,8 @@
       class="foods"
       src="@/assets/images/game-itens/food13.png"
     />
+    <!-- MODALS -->
+    <feedback-container />
     <buy-modal :web3="web3Instance" />
   </div>
 </template>
@@ -29,6 +31,7 @@ import ContactTheTeam from "@/components/ContactTheTeam.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import CarouselImages from "@/components/CarouselImages.vue";
 import Modal from "@/components/BuyModal/Modal.vue";
+import FeedbackContainer from "@/components/Feedback/FeedbackContainer.vue";
 import Web3 from "web3";
 
 declare interface HomeData {
@@ -58,6 +61,7 @@ export default defineComponent({
     TeamCardsContainer,
     ContactTheTeam,
     FooterComponent,
+    FeedbackContainer,
     "buy-modal": Modal,
   },
   mounted() {

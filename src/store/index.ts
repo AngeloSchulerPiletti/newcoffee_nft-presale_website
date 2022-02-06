@@ -5,7 +5,7 @@ export type State = {
   hasMetaMask: boolean;
   walletAddress: string | null;
   newcoffeeAddress: string;
-  // meetTheTeam: boolean;
+  feedbacks: [{description: String, isError: boolean}] | Array<Object>;
 };
 
 export const store = createStore({
@@ -14,7 +14,7 @@ export const store = createStore({
     hasMetaMask: false,
     walletAddress: null,
     newcoffeeAddress: "0xc82c591e93245f2425079F63CE711bD1864248EF",
-    // meetTheTeam: false,
+    feedbacks: [],
   },
   mutations: {
     setWalletAddress(state: State, address: string) {
@@ -29,9 +29,14 @@ export const store = createStore({
     closeModal(state: State) {
       state.modalBoolState = false;
     },
-    // setMeetTheTeam(state: State, payload: boolean){
-    //   state.meetTheTeam = payload;
-    // }
+    addFeedback(state:State, feedback: {description: String, isError: boolean}){
+      state.feedbacks.push(feedback);
+    },
+    removeFeedback(state: State, index: number){
+      console.log("UH");
+      
+      state.feedbacks.splice(index, 1);
+    },
   },
   actions: {},
   modules: {},

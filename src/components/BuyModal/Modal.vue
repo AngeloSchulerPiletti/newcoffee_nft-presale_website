@@ -178,16 +178,27 @@ export default defineComponent({
               console.log(res);
               this.transactionLoading = false;
               this.closeModal(true);
-              // open success
+              this.$store.commit("addFeedback", {
+                description: "Your chest is being sent to our stock",
+                isError: false,
+              });
             })
             .catch((err: any) => {
               this.transactionLoading = false;
               this.apiError = true;
+              this.$store.commit("addFeedback", {
+                description: "There is a problem with your wallet",
+                isError: true,
+              });
             });
         })
         .catch((err) => {
           console.log(err);
           this.apiError = true;
+          this.$store.commit("addFeedback", {
+            description: "We couldn't complete it, try again soon",
+            isError: true,
+          });
         });
     },
     goNext() {
@@ -324,11 +335,10 @@ export default defineComponent({
       .price-check {
         grid-area: f;
         .warn {
-        border: 2px solid #000;
-        padding: 11px;
+          border: 2px solid #000;
+          padding: 11px;
           font-size: 16px;
           font-weight: 400;
-
         }
       }
 

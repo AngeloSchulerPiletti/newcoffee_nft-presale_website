@@ -29,7 +29,6 @@ export default defineComponent({
     setTimeout(() => {
       if (!this.hasMetaMask) {
         this.connection = "not-available";
-        console.log("não tem metamask");
       }
     }, 0);
   },

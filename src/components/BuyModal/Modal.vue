@@ -206,7 +206,6 @@ export default defineComponent({
             value: "0000020000000000000", // BNBPrice, //
           })
             .then((res: any) => {
-              console.log(res);
               this.transactionLoading = false;
               this.closeModal(true);
               this.$store.commit("addFeedback", {
@@ -224,7 +223,6 @@ export default defineComponent({
             });
         })
         .catch((err) => {
-          console.log(err);
           this.apiError = true;
           this.$store.commit("addFeedback", {
             description: "We couldn't complete it, try again soon",

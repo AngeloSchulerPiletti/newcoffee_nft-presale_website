@@ -161,8 +161,8 @@ export default defineComponent({
       if (newV) {
         this.loadingPhraseInterval = setInterval(() => {
           this.loadingPhraseIndex +=
-            this.loadingPhraseIndex == this.loadingPhrases.length
-              ? -this.loadingPhrases.length
+            this.loadingPhraseIndex == this.loadingPhrases.length - 1
+              ? -(this.loadingPhrases.length - 1)
               : 1;
         }, 3500);
       } else {

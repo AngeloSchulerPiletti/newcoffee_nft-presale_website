@@ -1,6 +1,6 @@
 <template>
   <div class="container flex_c">
-    <h3 class="shadow-3 title-1 pseudo-2 no-content">Meet the Team</h3>
+    <h3 id="team-title" :class="`shadow-3 title-1 pseudo-2 no-content anim-${anim}`">Meet the Team</h3>
     <div class="cards-container grid">
       <team-card
         v-for="(card, index) in getTeamData"
@@ -30,6 +30,9 @@ export default {
       return require("@/data/teamcards.json");
     },
   },
+  props:{
+    anim: Boolean,
+  },
   components: {
     TeamCard,
   },
@@ -49,7 +52,7 @@ export default {
     transition: transform 400ms;
     transform-style: preserve-3d;
 
-    &:hover {
+    &.anim-true {
       // Remove it and change to scroll event
       transform: scale(1.03);
       &::before {

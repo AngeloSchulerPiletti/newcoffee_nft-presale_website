@@ -5,8 +5,8 @@
     <buy-button :web3="web3Instance" />
     <carousel-images />
     <road-map-container />
-    <team-cards-container />
-    <contact-the-team />
+    <team-cards-container :anim="animation.team"/>
+    <contact-the-team/>
     <footer-component />
     <img
       id="chicken"
@@ -33,6 +33,9 @@ import Web3 from "web3";
 
 declare interface HomeData {
   web3Instance: Web3 | null;
+  animation: {
+    team: boolean;
+  };
 }
 
 export default defineComponent({
@@ -40,6 +43,9 @@ export default defineComponent({
   data(): HomeData {
     return {
       web3Instance: null,
+      animation: {
+        team: false,
+      },
     };
   },
   components: {
@@ -60,6 +66,17 @@ export default defineComponent({
       this.$store.commit("setHasMetaMask", true);
       this.web3Instance = new Web3(window.ethereum);
     }
+
+    const margin = (3 * window.innerHeight) / 4;
+    var meetTheTeamTop =
+      window.document.getElementById("team-title")?.offsetTop;
+
+    window.addEventListener("scroll", () => {
+      let actual = window.scrollY + margin;
+      if (actual > meetTheTeamTop!) {
+        this.animation.team = true;
+      }
+    });
   },
 });
 </script>

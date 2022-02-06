@@ -25,7 +25,7 @@
       <div class="blur in"></div>
       <div class="info-container in">
         <h6 class="title-1">Estamos em Pré-venda!</h6>
-        <button class="btn-1">comprar baú</button>
+        <button @click="buyModal" class="btn-1">comprar baú</button>
       </div>
       <div class="mouse-container in">
         <mouse-scroll />
@@ -37,6 +37,28 @@
 <script>
 import MouseScroll from "@/components/icons/MouseScroll.vue";
 export default {
+  methods: {
+    buyModal() {
+      if (this.$store.state.walletAddress) {
+        this.$store.commit("openModal");
+      } else {
+        let button = window.document.getElementById("buy-container");
+        var screenHeight = window.innerHeight;
+        var buttonY = button.offsetTop;
+        var buttonHeight = button.offsetHeight;
+        const finalY = buttonY - (screenHeight / 2 - buttonHeight / 2);
+
+        var y = 1;
+        const multiple = 1.03;
+        var interval = setInterval(() => {
+          window.scrollTo(0, y);
+          y *= multiple;
+          y++;
+          y >= finalY ? clearInterval(interval) : null;
+        }, 1);
+      }
+    },
+  },
   components: {
     MouseScroll,
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex_c">
+  <div id="buy-container" class="flex_c">
     <span class="warn" v-if="connection == 'not-available'"
       >Instale a
       <a target="_blank" href="https://metamask.io/">MetaMask</a> para
@@ -88,7 +88,7 @@ export default defineComponent({
   }
 }
 
-.container {
+#buy-container {
   align-items: center;
   gap: 20px;
   .in {

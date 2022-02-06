@@ -5,15 +5,15 @@
     <buy-button :web3="web3Instance" />
     <carousel-images />
     <road-map-container />
-    <team-cards-container :anim="animation.team"/>
-    <contact-the-team/>
+    <team-cards-container :anim="animation.team" />
+    <contact-the-team />
     <footer-component />
     <img
       id="chicken"
       class="foods"
       src="@/assets/images/game-itens/food13.png"
     />
-    <buy-modal />
+    <buy-modal :web3="web3Instance" />
   </div>
 </template>
 
@@ -76,7 +76,6 @@ export default defineComponent({
       if (actual > meetTheTeamTop!) {
         this.animation.team = true;
       }
-      
     });
   },
 });

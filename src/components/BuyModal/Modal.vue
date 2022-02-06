@@ -28,6 +28,7 @@
               max="100"
               v-model="amount"
               id="amount"
+              @focusout="calculateTotal"
             />
           </div>
           <div class="flex_c selected-bau">
@@ -35,7 +36,9 @@
             <p>{{ choosedBau.type }}</p>
           </div>
           <div>
-            <label>Total: <span>U$ XX,XX</span></label>
+            <label
+              >Total: <span>U$ {{ total }}</span></label
+            >
           </div>
           <div class="flex_c connected-wallet">
             <label>Connected Wallet</label>
@@ -57,7 +60,7 @@
             :class="`button-next shadow-3 disabled-${bauNotSelected} pseudo-2 no-content`"
             @click="goNext"
           >
-            next
+            {{ apiError ? "try again" : "next" }}
           </button>
           <button class="button-cancel shadow-3" @click="closeModal($event)">
             cancel
@@ -71,6 +74,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Card from "./Card.vue";
+import axios from "axios";
 
 declare interface BauCards {
   imageName: string;
@@ -89,7 +93,9 @@ export default defineComponent({
         type: "",
         price: "0,00",
       },
+      total: "0,00",
       titles: ["Choose your chest", "Checkout"],
+      apiError: false,
     };
   },
   mounted() {
@@ -106,16 +112,59 @@ export default defineComponent({
       return this.stage == 1;
     },
     isShow() {
-      // return true;
       setTimeout(() => {
         this.isOpening = this.$store.state.modalBoolState;
       }, 0);
       return this.$store.state.modalBoolState;
     },
   },
+  watch: {
+    stage(newV) {
+      if (newV == 1) {
+        this.calculateTotal();
+      }
+    },
+  },
   methods: {
+    calculateTotal() {
+      let amount = this.amount;
+      this.amount = amount <= 0 ? 1 : amount;
+      this.amount = amount > 200 ? 200 : amount;
+      this.total = (Number.parseInt(this.choosedBau.price) * amount)
+        .toFixed(2)
+        .toString();
+    },
+    sendBuyTransaction() {
+      axios
+        .get("https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT")
+        .then((res) => {
+          this.apiError = false;
+          var BNBPrice = this.web3!.utils.toWei(
+            (
+              Math.ceil(
+                (Number.parseInt(this.total) / res.data.price) * 10 ** 6
+              ) /
+              10 ** 6
+            ).toString()
+          );
+
+          this.web3!.eth.sendTransaction({
+            from: this.$store.state.walletAddress,
+            to: this.$store.state.newcoffeeAddress,
+            value: BNBPrice, //"0000020000000000000"
+          }).then((res: any) => {
+            console.log(res);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          this.apiError = true;
+        });
+    },
     goNext() {
-      if (!this.bauNotSelected && !this.lastStage) {
+      if (this.lastStage) {
+        this.sendBuyTransaction();
+      } else if (!this.bauNotSelected) {
         this.stage++;
       }
     },
@@ -142,6 +191,9 @@ export default defineComponent({
   },
   components: {
     "bau-card": Card,
+  },
+  props: {
+    web3: Object,
   },
 });
 </script>
@@ -250,6 +302,28 @@ export default defineComponent({
       label {
         font-family: "Supermercado One", cursive;
         font-size: 23px;
+      }
+      .try-container {
+        position: relative;
+
+        .error-button {
+          position: absolute;
+          font-size: 22px;
+          background-color: #000;
+          padding: 5px 15px;
+          color: $white;
+          transition: transform 200ms;
+          white-space: nowrap;
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+        label {
+          position: absolute;
+          span {
+            white-space: nowrap;
+          }
+        }
       }
       p {
         font-weight: 500;

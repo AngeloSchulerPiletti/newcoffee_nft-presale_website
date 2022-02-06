@@ -28,6 +28,7 @@ footer {
 
   .developed-by {
     font-weight: 300;
+    text-align: center;
 
     a {
       font-weight: 400;

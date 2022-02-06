@@ -146,7 +146,7 @@ export default defineComponent({
 
 @media (max-width: 760px) {
   .container {
-    padding: 200px 25px 0 25px;
+    padding: 150px 25px 0 25px;
     justify-content: center;
     .images-wrapper {
       height: 80vh;
@@ -160,7 +160,7 @@ export default defineComponent({
 
 @media (max-width: 500px) {
   .container {
-    padding: 200px 15px 0 15px;
+    padding: 120px 15px 0 15px;
     .images-wrapper {
       max-height: 90vh;
       height: 90vh;

@@ -2,7 +2,10 @@
   <div class="home flex_c">
     <presentation><logo-component /></presentation>
     <instruction-cards-container />
-    <buy-button :web3="web3Instance" />
+    <buy-button :web3="web3Instance" v-if="!isSmallScreen" />
+    <h6 v-else class="go-to-desktop title-2 shadow-3 pseudo-2 no-content">
+      To buy your chest, open it on your desktop
+    </h6>
     <carousel-images />
     <road-map-container />
     <team-cards-container :anim="animation.team" />
@@ -64,6 +67,11 @@ export default defineComponent({
     FeedbackContainer,
     "buy-modal": Modal,
   },
+  computed: {
+    isSmallScreen() {
+      return window.innerWidth < 800;
+    },
+  },
   mounted() {
     this.$store.commit("setHasMetaMask", false);
     if (window.ethereum && window.ethereum.isMetaMask) {
@@ -96,6 +104,27 @@ export default defineComponent({
     height: 28vw;
     transform: translate(0, 26%) rotate(-15deg);
     z-index: -1;
+  }
+  .go-to-desktop {
+    padding: 10px 20px;
+    width: 70vw;
+    margin: auto;
+    text-align: center;
+    color: $white;
+    background-color: #000;
+    &::before,
+    &::after {
+      width: 80%;
+      height: 8px;
+      left: 10%;
+      border: 2px solid #000;
+    }
+    &::before {
+      top: -6px;
+    }
+    &::after {
+      bottom: -6px;
+    }
   }
 }
 </style>

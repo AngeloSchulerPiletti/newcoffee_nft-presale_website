@@ -25,7 +25,7 @@
       <div class="blur in"></div>
       <div class="info-container in">
         <h6 class="title-1">Pre-sale available!</h6>
-        <button @click="buyModal" class="btn-1">buy your chest</button>
+        <button @click="buyModal" class="btn-1 pseudo-1 no-content">buy your chest</button>
       </div>
       <div class="mouse-container in">
         <mouse-scroll />
@@ -133,8 +133,27 @@ export default {
       );
       padding: 30px 60px;
 
-      button {
+      .btn-1 {
         margin-top: 18px;
+        border: 3px solid $white;
+        font-size: 25px;
+        color: $white;
+        font-weight: 400;
+        padding: 8px 16px;
+        cursor: pointer;
+
+        &::before {
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 100%;
+          background-color: $white;
+          transition: right 400ms;
+        }
+
+        &:hover::before {
+          right: 0;
+        }
       }
     }
     .mouse-container {
@@ -147,6 +166,48 @@ export default {
         line {
           stroke: $white;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    #donnut {
+      width: 42vw;
+      height: 42vw;
+    }
+    #hotdog {
+      width: 54vw;
+      height: 54vw;
+    }
+
+    .video-container {
+      .info-container {
+        padding: 20px;
+
+        .btn-1 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    #donnut {
+      width: 58vw;
+      height: 58vw;
+    }
+    #hotdog {
+      width: 70vw;
+      height: 70vw;
+    }
+
+    .video-container {
+      .info-container {
+        padding: 10px;
       }
     }
   }

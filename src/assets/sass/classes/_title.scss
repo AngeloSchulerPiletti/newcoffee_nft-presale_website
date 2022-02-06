@@ -1,6 +1,19 @@
-.title-1{
-    font-size: 50px;
+.title-1 {
+  font-size: 50px;
+
+  @media (max-width: 750px) {
+    font-size: 36px;
+  }
+  @media (max-width: 500px) {
+    font-size: 32px;
+  }
 }
-.title-2{
-    font-size: 40px;
+.title-2 {
+  font-size: 40px;
+  @media (max-width: 750px) {
+    font-size: 26px;
+  }
+  @media (max-width: 500px) {
+    font-size: 20px;
+  }
 }

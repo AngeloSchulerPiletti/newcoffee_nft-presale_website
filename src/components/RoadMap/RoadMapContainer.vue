@@ -7,8 +7,8 @@
         :data="item"
       />
     </div>
-    <img id="cake" class="foods" src="@/assets/images/game-itens/Food1.png"/>
-    <img id="pastel" class="foods" src="@/assets/images/game-itens/Food2.png"/>
+    <img id="cake" class="foods" src="@/assets/images/game-itens/Food1.png" />
+    <img id="pastel" class="foods" src="@/assets/images/game-itens/Food2.png" />
   </div>
 </template>
 
@@ -55,11 +55,42 @@ export default defineComponent({
     height: 30vw;
     transform: translate(40%, -50%) rotate(30deg);
   }
-  #pastel{
+  #pastel {
     left: 0;
     width: 35vw;
     height: 35vw;
     transform: translateX(-50%) rotate(70deg);
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    padding-left: 50px;
+  }
+}
+
+@media (max-width: 825px) {
+  .container {
+    #cake {
+      width: 300px;
+      height: 300px;
+    }
+    #pastel {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    margin-bottom: 180px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding-left: 26px;
   }
 }
 </style>

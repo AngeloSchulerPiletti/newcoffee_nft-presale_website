@@ -1,6 +1,6 @@
 <template>
   <div class="item-container flex_c">
-    <h5 class="date shadow-3 pseudo-1 no-content">
+    <h5 class="date title-1 shadow-3 pseudo-1 no-content">
       {{ `${data.month}, ${data.year}` }}
     </h5>
     <div v-if="data.title && data.items" class="content shadow-3">
@@ -36,7 +36,6 @@ export default defineComponent({
   .date {
     width: fit-content;
     padding: 8px 18px;
-    font-size: 48px;
     outline: 3px solid #000;
     background-color: $bege-fraco;
 
@@ -81,6 +80,46 @@ export default defineComponent({
     position: absolute;
     bottom: -20px;
     transform: translateY(100%);
+  }
+}
+
+@media (max-width: 825px) {
+  .item-container {
+    .content {
+      width: 400px;
+      padding: 30px 0 10px 10px;
+      margin-left: 140px;
+
+      ul {
+        font-size: 16px;
+      }
+    }
+    .blocked-title {
+      bottom: -16px;
+      transform: translate(40px, 100%);
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .item-container {
+    .content {
+      width: 70vw;
+      margin-left: 12vw;
+      .float-title {
+        font-size: 15px;
+        padding: 5px 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .item-container {
+    .date {
+      font-size: 24px;
+      padding: 5px 10px;
+    }
   }
 }
 </style>

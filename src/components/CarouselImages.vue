@@ -150,7 +150,7 @@ export default defineComponent({
     justify-content: center;
     .images-wrapper {
       height: 80vh;
-      width: 80vw;
+      width: calc(100% - 40px);
     }
     .content {
       display: none;

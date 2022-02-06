@@ -67,9 +67,12 @@
             :class="`button-next shadow-3 disabled-${bauNotSelected} pseudo-2 no-content`"
             @click="goNext"
           >
+            <span v-show="apiError" class="ops"
+              >ops, an error ocurred, try again</span
+            >
             {{ apiError ? "try again" : "next" }}
           </button>
-          <button class="button-cancel shadow-3" @click="closeModal($event)">
+          <button class="button-cancel shadow-3" @click="closeModal(true)">
             cancel
           </button>
         </div>
@@ -111,6 +114,7 @@ export default defineComponent({
       total: "0,00",
       titles: ["Choose your chest", "Checkout"],
       apiError: false,
+      transactionLoading: false,
     };
   },
   mounted() {
@@ -135,6 +139,7 @@ export default defineComponent({
   },
   watch: {
     stage(newV) {
+      this.apiError = false;
       if (newV == 1) {
         this.calculateTotal();
       }
@@ -163,13 +168,22 @@ export default defineComponent({
             ).toString()
           );
 
+          this.transactionLoading = true;
           this.web3!.eth.sendTransaction({
             from: this.$store.state.walletAddress,
             to: this.$store.state.newcoffeeAddress,
-            value: BNBPrice, //"0000020000000000000"
-          }).then((res: any) => {
-            console.log(res);
-          });
+            value: "0000020000000000000", // BNBPrice, //
+          })
+            .then((res: any) => {
+              console.log(res);
+              this.transactionLoading = false;
+              this.closeModal(true);
+              // open success
+            })
+            .catch((err: any) => {
+              this.transactionLoading = false;
+              this.apiError = true;
+            });
         })
         .catch((err) => {
           console.log(err);
@@ -193,11 +207,9 @@ export default defineComponent({
       this.choosedBau.type = type;
     },
     closeModal(event: any) {
-      if (
-        event.target.classList.contains("container") ||
-        event.target.classList.contains("button-cancel")
-      ) {
+      if (event === true || event.target.classList.contains("container")) {
         this.isOpening = false;
+        this.apiError = false;
         setTimeout(() => {
           this.$store.commit("closeModal");
         }, 410);
@@ -312,8 +324,11 @@ export default defineComponent({
       .price-check {
         grid-area: f;
         .warn {
+        border: 2px solid #000;
+        padding: 11px;
           font-size: 16px;
           font-weight: 400;
+
         }
       }
 
@@ -400,6 +415,16 @@ export default defineComponent({
         font-size: 35px;
         padding: 3px 14px;
         transition: box-shadow 260ms, transform 150ms;
+
+        .ops {
+          position: absolute;
+          top: -8px;
+          left: 50%;
+          transform: translate(-50%, -100%);
+          color: #860101;
+          font-size: 12px;
+          white-space: nowrap;
+        }
 
         &:hover {
           box-shadow: 0 0 12px transparent !important;

@@ -48,6 +48,13 @@
             <label>NewCoffee Wallet</label>
             <p>{{ $store.state.newcoffeeAddress }}</p>
           </div>
+          <div class="price-check">
+            <p class="warn">
+              The price paid in BNB will be checked in the game's server
+              considering the date and time of your purchase. Don't try to
+              change it.
+            </p>
+          </div>
         </div>
         <div class="actions grid">
           <button
@@ -297,9 +304,18 @@ export default defineComponent({
       grid-template-areas:
         "a b c"
         "d d d"
-        "e e e";
+        "e e e"
+        "f f f";
       width: 100%;
       gap: 20px;
+
+      .price-check {
+        grid-area: f;
+        .warn {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
 
       .connected-wallet {
         grid-area: d;

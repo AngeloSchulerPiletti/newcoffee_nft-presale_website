@@ -3,7 +3,7 @@
     <presentation><logo-component /></presentation>
     <instruction-cards-container />
     <buy-button :web3="web3Instance" v-if="!isSmallScreen" />
-    <h6 v-else class="go-to-desktop title-2 shadow-3 pseudo-2 no-content">
+    <h6 v-else id="go-to-desktop" class="title-2 shadow-3 pseudo-2 no-content">
       To buy your chest, open it on your desktop
     </h6>
     <carousel-images />
@@ -105,7 +105,7 @@ export default defineComponent({
     transform: translate(0, 26%) rotate(-15deg);
     z-index: -1;
   }
-  .go-to-desktop {
+  #go-to-desktop {
     padding: 10px 20px;
     width: 70vw;
     margin: auto;

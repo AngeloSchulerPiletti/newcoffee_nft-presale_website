@@ -42,7 +42,9 @@ export default {
       if (this.$store.state.walletAddress) {
         this.$store.commit("openModal");
       } else {
-        let button = window.document.getElementById("buy-container");
+        let button = window.document.querySelector("#buy-container");
+        button = button ? button : window.document.querySelector("#go-to-desktop");
+
         var screenHeight = window.innerHeight;
         var buttonY = button.offsetTop;
         var buttonHeight = button.offsetHeight;

@@ -24,8 +24,8 @@
       ></video>
       <div class="blur in"></div>
       <div class="info-container in">
-        <h6 class="title-1">Estamos em Pré-venda!</h6>
-        <button @click="buyModal" class="btn-1">comprar baú</button>
+        <h6 class="title-1">Pre-sale available!</h6>
+        <button @click="buyModal" class="btn-1">buy your chest</button>
       </div>
       <div class="mouse-container in">
         <mouse-scroll />

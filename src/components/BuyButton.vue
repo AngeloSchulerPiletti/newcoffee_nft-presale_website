@@ -1,18 +1,17 @@
 <template>
   <div id="buy-container" class="flex_c">
     <span class="warn" v-if="connection == 'not-available'"
-      >Instale a
-      <a target="_blank" href="https://metamask.io/">MetaMask</a> para
-      prosseguir</span
+      >Install the
+      <a target="_blank" href="https://metamask.io/">MetaMask wallet</a> to proceed</span
     >
     <button :class="`in buy-button pseudo-1 title-1 ${connection}`" @click="buyModal">
-      comprar baú
+      buy chest
     </button>
     <button
       @click="connectWallet"
       :class="`in shadow-3 connect-button ${connection}`"
     >
-      {{ $store.state.walletAddress ? "wallet conectada" : "conectar wallet" }}
+      {{ $store.state.walletAddress ? "wallet connected" : "connect wallet" }}
     </button>
   </div>
 </template>
@@ -101,7 +100,7 @@ export default defineComponent({
     background: #00000020;
 
     &::before {
-      content: "comprar baú";
+      content: "buy chest";
       color: #000;
       outline: 3px solid #000;
       top: 0;

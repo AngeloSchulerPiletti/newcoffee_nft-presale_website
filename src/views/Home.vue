@@ -76,6 +76,7 @@ export default defineComponent({
       if (actual > meetTheTeamTop!) {
         this.animation.team = true;
       }
+      
     });
   },
 });

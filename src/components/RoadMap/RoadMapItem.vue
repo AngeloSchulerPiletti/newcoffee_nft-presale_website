@@ -9,7 +9,9 @@
         <li v-for="(event, index) in data.items" :key="index">{{ event }}</li>
       </ul>
     </div>
-    <h6 v-else class="blocked-title"></h6>
+    <h6 v-else class="blocked-title title-2">
+      {{ data.title }}
+    </h6>
   </div>
 </template>
 
@@ -76,6 +78,9 @@ export default defineComponent({
     }
   }
   .blocked-title {
+    position: absolute;
+    bottom: -20px;
+    transform: translateY(100%);
   }
 }
 </style>

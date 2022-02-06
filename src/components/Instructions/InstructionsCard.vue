@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <h3>{{ title }}</h3>
+    <h3 class="title-2">{{ title }}</h3>
     <div class="info shadow-3">
       <p>{{ paragraph }}</p>
     </div>
@@ -29,7 +29,6 @@ export default defineComponent({
     cursor: default;
   }
   h3 {
-    font-size: 34px;
     margin-bottom: 22px;
   }
   .info {
@@ -43,6 +42,21 @@ export default defineComponent({
       text-align: justify;
       text-indent: 2em;
       line-height: 1.3em;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .card {
+    h3 {
+      margin-bottom: 16px;
+    }
+    .info {
+      padding: 8px 18px;
+
+      p {
+        font-size: 16px;
+      }
     }
   }
 }

@@ -9,7 +9,7 @@
         <li v-for="(event, index) in data.items" :key="index">{{ event }}</li>
       </ul>
     </div>
-    <h6 v-else class="blocked-title title-2">
+    <h6 v-else class="blocked-title title-1">
       {{ data.title }}
     </h6>
   </div>

@@ -8,7 +8,11 @@
       :title="getCardsData[1].title"
       :paragraph="getCardsData[1].paragraph"
     />
-    <img id="burguer" class="foods" src="@/assets/images/game-itens/food12.png">
+    <img
+      id="burguer"
+      class="foods"
+      src="@/assets/images/game-itens/food12.png"
+    />
   </div>
 </template>
 
@@ -33,11 +37,39 @@ export default {
   gap: 60px;
   position: relative;
 
-  #burguer{
+  #burguer {
     left: 0;
     width: 35vw;
     height: 35vw;
     transform: translate(-80%, 80%);
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    padding: 140px 30px 120px 30px;
+    gap: 30px;
+
+    #burguer {
+      width: 55vw;
+      height: 55vw;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    #burguer {
+      width: 500px;
+      height: 500px;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    padding: 140px 20px 80px 20px;
+    flex-direction: column;
   }
 }
 </style>

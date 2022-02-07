@@ -151,4 +151,13 @@ export default {
     }
   }
 }
+
+@media (max-width: 400px) {
+  .container {
+    .cards-container {
+      gap: 26px;
+      grid-template-columns: 80vw;
+    }
+  }
+}
 </style>

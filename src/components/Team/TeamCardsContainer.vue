@@ -24,9 +24,6 @@ export interface CardInterface {
   role: string;
   about: string;
   pictureName: string;
-  linkedInUrl?: string;
-  instagramUrl?: string;
-  twitterUrl?: string;
 }
 
 export default {
@@ -87,9 +84,9 @@ export default {
     }
   }
   .cards-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding: 0 60px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    padding: 0 100px;
     position: relative;
   }
 }

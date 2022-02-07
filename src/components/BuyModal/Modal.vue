@@ -203,7 +203,7 @@ export default defineComponent({
           this.web3!.eth.sendTransaction({
             from: this.$store.state.walletAddress,
             to: this.$store.state.newcoffeeAddress,
-            value: "0000020000000000000", // BNBPrice, //
+            value: BNBPrice, // "0000020000000000000", // BNBPrice, //
           })
             .then((res: any) => {
               this.transactionLoading = false;

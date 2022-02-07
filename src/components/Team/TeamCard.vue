@@ -1,9 +1,11 @@
 <template>
   <div class="card shadow-3 flex_c">
-    <img
-      :src="`./images/team/${cardData?.pictureName}`"
-      :alt="`foto de ${cardData?.name}`"
-    />
+    <div class="img-container">
+      <img
+        :src="`./images/team/${cardData?.pictureName}`"
+        :alt="`foto de ${cardData?.name}`"
+      />
+    </div>
     <div class="content flex_c">
       <h6 class="flex_c">
         {{ cardData?.name }}
@@ -36,15 +38,22 @@ $border: 8px;
   background-color: $white;
   cursor: default;
 
-  img {
-    border-top-left-radius: $border;
-    border-top-right-radius: $border;
-    max-width: 100%;
-    object-fit: cover;
+  .img-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
+
+    img {
+      position: absolute;
+      border-top-left-radius: $border;
+      border-top-right-radius: $border;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
   .content {
-    flex-grow: 1;
-
     h6 {
       text-align: center;
       padding: 20px;
@@ -65,6 +74,14 @@ $border: 8px;
       border-bottom-right-radius: $border;
       font-weight: 200;
       color: $white;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .card {
+    .img-container {
+      height: 300px;
     }
   }
 }

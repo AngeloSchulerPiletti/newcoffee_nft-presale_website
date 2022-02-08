@@ -1,11 +1,19 @@
 <template>
   <div class="button-container flex_c">
-    <button class="contact-button pseudo-1 title-1">contact the team</button>
+    <button @click="sendEmail" class="contact-button pseudo-1 title-1">
+      contact the team
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    sendEmail() {
+      window.location.href = "mailto:suporte@new-coffee.io";
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -29,7 +37,7 @@ export default {};
       transition: transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1);
       background-color: $bege-fraco;
     }
-    
+
     &:hover::before {
       transform: translate(12px, -12px);
     }

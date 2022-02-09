@@ -6,11 +6,11 @@
     <h6 v-else id="go-to-desktop" class="title-2 shadow-3 pseudo-2 no-content">
       To buy your chest, open it on your desktop
     </h6>
-    <carousel-images />
-    <road-map-container />
-    <team-cards-container :anim="animation.team" />
-    <contact-the-team />
-    <footer-component />
+    <carousel-images v-if="secondaryLoads" />
+    <road-map-container v-if="secondaryLoads" />
+    <team-cards-container :anim="animation.team" v-if="tertiaryLoads" />
+    <contact-the-team v-if="tertiaryLoads" />
+    <footer-component v-if="tertiaryLoads" />
     <img
       id="chicken"
       class="foods"
@@ -23,16 +23,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, defineAsyncComponent } from "vue";
 import LogoComponent from "@/components/LogoComponent.vue";
 import Presentation from "@/components/Presentation.vue";
 import InstructionCardsContainer from "@/components/Instructions/InstructionCardsContainer.vue";
 import BuyButton from "@/components/BuyButton.vue";
-import RoadMapContainer from "@/components/RoadMap/RoadMapContainer.vue";
-import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
-import ContactTheTeam from "@/components/ContactTheTeam.vue";
-import FooterComponent from "@/components/FooterComponent.vue";
-import CarouselImages from "@/components/CarouselImages.vue";
+// import RoadMapContainer from "@/components/RoadMap/RoadMapContainer.vue";
+// import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
+// import ContactTheTeam from "@/components/ContactTheTeam.vue";
+// import FooterComponent from "@/components/FooterComponent.vue";
+// import CarouselImages from "@/components/CarouselImages.vue";
 import Modal from "@/components/BuyModal/Modal.vue";
 import FeedbackContainer from "@/components/Feedback/FeedbackContainer.vue";
 import Web3 from "web3";
@@ -42,6 +42,8 @@ declare interface HomeData {
   animation: {
     team: boolean;
   };
+  secondaryLoads: boolean;
+  tertiaryLoads: boolean;
 }
 
 export default defineComponent({
@@ -52,6 +54,8 @@ export default defineComponent({
       animation: {
         team: false,
       },
+      secondaryLoads: false,
+      tertiaryLoads: false,
     };
   },
   components: {
@@ -59,11 +63,21 @@ export default defineComponent({
     Presentation,
     InstructionCardsContainer,
     BuyButton,
-    CarouselImages,
-    RoadMapContainer,
-    TeamCardsContainer,
-    ContactTheTeam,
-    FooterComponent,
+    CarouselImages: defineAsyncComponent(
+      () => import("@/components/CarouselImages.vue")
+    ),
+    RoadMapContainer: defineAsyncComponent(
+      () => import("@/components/RoadMap/RoadMapContainer.vue")
+    ),
+    TeamCardsContainer: defineAsyncComponent(
+      () => import("@/components/Team/TeamCardsContainer.vue")
+    ),
+    ContactTheTeam: defineAsyncComponent(
+      () => import("@/components/ContactTheTeam.vue")
+    ),
+    FooterComponent: defineAsyncComponent(
+      () => import("@/components/FooterComponent.vue")
+    ),
     FeedbackContainer,
     "buy-modal": Modal,
   },
@@ -73,22 +87,31 @@ export default defineComponent({
     },
   },
   mounted() {
+    setTimeout(() => {
+      this.secondaryLoads = true;
+    }, 2000);
+
+    setTimeout(() => {
+      this.tertiaryLoads = true;
+      setTimeout(() => {
+        const margin = (3 * window.innerHeight) / 4;
+        var meetTheTeamTop =
+          window.document.getElementById("team-title")?.offsetTop;
+
+        window.addEventListener("scroll", () => {
+          let actual = window.scrollY + margin;
+          if (actual > meetTheTeamTop!) {
+            this.animation.team = true;
+          }
+        });
+      }, 100);
+    }, 3500);
+
     this.$store.commit("setHasMetaMask", false);
     if (window.ethereum && window.ethereum.isMetaMask) {
       this.$store.commit("setHasMetaMask", true);
       this.web3Instance = new Web3(window.ethereum);
     }
-
-    const margin = (3 * window.innerHeight) / 4;
-    var meetTheTeamTop =
-      window.document.getElementById("team-title")?.offsetTop;
-
-    window.addEventListener("scroll", () => {
-      let actual = window.scrollY + margin;
-      if (actual > meetTheTeamTop!) {
-        this.animation.team = true;
-      }
-    });
   },
 });
 </script>

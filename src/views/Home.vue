@@ -12,6 +12,7 @@
     <contact-the-team v-if="tertiaryLoads" />
     <footer-component v-if="tertiaryLoads" />
     <img
+      v-if="tertiaryLoads"
       id="chicken"
       class="foods"
       src="@/assets/images/game-itens/food13.png"

@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card flex_c">
     <h3 class="title-2">{{ title }}</h3>
     <div class="info shadow-3">
       <p>{{ paragraph }}</p>
@@ -21,6 +21,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .card {
   transition: transform 400ms;
+  width: 50%;
+
   &:hover {
     transform: scale(1.01);
   }
@@ -36,6 +38,7 @@ export default defineComponent({
     border: 2px solid #000;
     position: relative;
     padding: 16px 32px;
+    height: 100%;
 
     p {
       font-size: 19px;
@@ -48,6 +51,7 @@ export default defineComponent({
 
 @media (max-width: 750px) {
   .card {
+  width: 100%;
     h3 {
       margin-bottom: 16px;
     }

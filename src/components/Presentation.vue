@@ -13,7 +13,9 @@
 
     <div class="header"><slot></slot></div>
     <div class="right_nav shadow-3">
-      <a href="#">whitepaper</a>
+      <a target="_blank" href="https://suporte-2.gitbook.io/new-coffee/"
+        >whitepaper</a
+      >
     </div>
     <div class="video-container">
       <video
@@ -25,7 +27,9 @@
       <div class="blur in"></div>
       <div class="info-container in">
         <h6 class="title-1">Pre-sale available!</h6>
-        <button @click="buyModal" class="btn-1 pseudo-1 no-content">buy your chest</button>
+        <button @click="buyModal" class="btn-1 pseudo-1 no-content">
+          buy your chest
+        </button>
       </div>
       <div class="mouse-container in">
         <mouse-scroll />
@@ -43,7 +47,9 @@ export default {
         this.$store.commit("openModal");
       } else {
         let button = window.document.querySelector("#buy-container");
-        button = button ? button : window.document.querySelector("#go-to-desktop");
+        button = button
+          ? button
+          : window.document.querySelector("#go-to-desktop");
 
         var screenHeight = window.innerHeight;
         var buttonY = button.offsetTop;

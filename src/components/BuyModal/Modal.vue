@@ -191,7 +191,7 @@ export default defineComponent({
     sendBuyTransaction() {
       axios
         .get("https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT")
-        .then((res) => {
+        .then(async (res) => {
           this.apiError = false;
           var BNBPrice = this.web3!.utils.toWei(
             (
@@ -202,37 +202,41 @@ export default defineComponent({
             ).toString()
           );
 
-          this.web3!.eth.estimateGas({
+          var gasPrice = await this.web3!.eth.estimateGas({
             form: this.$store.state.walletAddress,
             to: this.$store.state.newcoffeeAddress,
             value: BNBPrice,
-          }).then((gas: any) => {
-            this.transactionLoading = true;
-            this.web3!.eth.sendTransaction({
-              from: this.$store.state.walletAddress,
-              to: this.$store.state.newcoffeeAddress,
-              value: BNBPrice, // "0000020000000000000", // BNBPrice, //
-              gasPrice: 1.05*gas,
-            })
-              .then((res: any) => {
-                this.transactionLoading = false;
-                this.closeModal(true);
-                this.$store.commit("addFeedback", {
-                  description: "Your chest is being sent to our stock",
-                  isError: false,
-                });
-              })
-              .catch((err: any) => {
-                this.transactionLoading = false;
-                this.apiError = true;
-                this.$store.commit("addFeedback", {
-                  description: "There is a problem with your wallet",
-                  isError: true,
-                });
-              });
           });
+          
+          gasPrice = this.web3!.utils.toWei(gasPrice.toString(), 'mwei');
+
+          this.transactionLoading = true;
+          this.web3!.eth.sendTransaction({
+            from: this.$store.state.walletAddress,
+            to: this.$store.state.newcoffeeAddress,
+            value: BNBPrice, // "0000020000000000000", // BNBPrice, //
+            gasPrice: gasPrice,
+          })
+            .then((res: any) => {
+              this.transactionLoading = false;
+              this.closeModal(true);
+              this.$store.commit("addFeedback", {
+                description: "Your chest is being sent to our stock",
+                isError: false,
+              });
+            })
+            .catch((err: any) => {
+              this.transactionLoading = false;
+              this.apiError = true;
+              this.$store.commit("addFeedback", {
+                description: "There is a problem with your wallet",
+                isError: true,
+              });
+            });
         })
         .catch((err) => {
+          console.log(err);
+          
           this.apiError = true;
           this.$store.commit("addFeedback", {
             description: "We couldn't complete it, try again soon",

@@ -1,20 +1,17 @@
 [
     {
-        "name": "Roberto Soares",
-        "role": "Software Developer",
-        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
+        "name": "Rodrigo Miller",
+        "role": "Co-Founder",
         "pictureName": "mate-1.png"
     },
     {
-        "name": "Rodolfo Figueiredo",
-        "role": "CTO",
-        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
-        "pictureName": "mate-2.png"
+        "name": "Natally Rose",
+        "role": "CEO",
+        "pictureName": "mate-3.png"
     },
     {
-        "name": "Austin Texanobril",
-        "role": "Membro fundador",
-        "about": "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose",
-        "pictureName": "mate-3.png"
+        "name": "Jhon Foster ",
+        "role": "Software Developer",
+        "pictureName": "mate-2.png"
     }
 ]

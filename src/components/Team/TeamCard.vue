@@ -11,7 +11,6 @@
         {{ cardData?.name }}
         <span class="role">{{ cardData?.role }}</span>
       </h6>
-      <p>{{ cardData?.about }}</p>
     </div>
   </div>
 </template>
@@ -64,16 +63,6 @@ $border: 8px;
         margin-top: 0.4em;
         font-weight: 500;
       }
-    }
-    p {
-      flex-grow: 1;
-      padding: 10px 20px 20px 20px;
-      text-align: justify;
-      background-color: $black;
-      border-bottom-left-radius: $border;
-      border-bottom-right-radius: $border;
-      font-weight: 200;
-      color: $white;
     }
   }
 }

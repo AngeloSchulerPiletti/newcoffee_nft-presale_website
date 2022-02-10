@@ -26,7 +26,7 @@
       ></video>
       <div class="blur in"></div>
       <div class="info-container in">
-        <h6 class="title-1">Pre-sale available!</h6>
+        <h6 class="title-1">Pre sale available!</h6>
         <button @click="buyModal" class="btn-1 pseudo-1 no-content">
           buy your chest
         </button>

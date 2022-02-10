@@ -22,7 +22,6 @@ import TeamCard from "@/components/Team/TeamCard.vue";
 export interface CardInterface {
   name: string;
   role: string;
-  about: string;
   pictureName: string;
 }
 
@@ -84,32 +83,16 @@ export default {
     }
   }
   .cards-container {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
-    padding: 0 100px;
-    position: relative;
+    width: 100%;
+    grid-template-columns:  minmax(150px, 300px)  minmax(150px, 300px)  minmax(150px, 300px); 
+    justify-content: center;
+    box-sizing: border-box;
+    gap: 30px;
+    padding: 0 60px;
   }
 }
 
-@media (max-width: 1150px) {
-  .container {
-    .cards-container {
-      gap: 30px;
-      padding: 0 30px;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-}
-
-@media (max-width: 850px) {
-  .container {
-    .cards-container {
-      grid-template-columns: 40vw 40vw;
-    }
-  }
-}
-
-@media (max-width: 650px) {
+@media (max-width: 800px) {
   .container {
     .cards-container {
       grid-template-columns: 44vw 44vw;
@@ -119,10 +102,6 @@ export default {
 
 @media (max-width: 550px) {
   .container {
-    .cards-container {
-      gap: 12px;
-      grid-template-columns: 46vw 46vw;
-    }
     h3 {
       padding: 3px 12px;
 
@@ -146,7 +125,6 @@ export default {
 @media (max-width: 500px) {
   .container {
     .cards-container {
-      gap: 26px;
       grid-template-columns: 60vw;
     }
   }
@@ -155,7 +133,6 @@ export default {
 @media (max-width: 400px) {
   .container {
     .cards-container {
-      gap: 26px;
       grid-template-columns: 80vw;
     }
   }

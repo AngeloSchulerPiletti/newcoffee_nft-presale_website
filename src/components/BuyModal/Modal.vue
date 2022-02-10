@@ -127,11 +127,12 @@ export default defineComponent({
       transactionLoading: false,
       loadingPhraseInterval: null as any,
       loadingPhrases: [
-        "Sending transaction",
-        "Listening to Globs Globs",
-        "Taking some rest",
-        "Almost there...",
-        "Wait, Globs Globs are back!",
+        "Opening your wallet",
+        "Waiting for MetaMask",
+        "Sending Transaction",
+        "Waiting for approval",
+        "Finishing the sale",
+        "Almost there"
       ],
       loadingPhraseIndex: 0,
     };

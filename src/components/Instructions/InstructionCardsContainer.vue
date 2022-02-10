@@ -12,6 +12,7 @@
       id="burguer"
       class="foods"
       src="@/assets/images/game-itens/food12.webp"
+      alt="food icon"
     />
   </div>
 </template>

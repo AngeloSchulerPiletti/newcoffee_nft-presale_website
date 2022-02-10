@@ -4,11 +4,13 @@
       id="donnut"
       class="foods"
       src="@/assets/images/game-itens/food18.webp"
+      alt="food icon"
     />
     <img
       id="hotdog"
       class="foods"
       src="@/assets/images/game-itens/food11.webp"
+      alt="food icon"
     />
 
     <div class="header"><slot></slot></div>

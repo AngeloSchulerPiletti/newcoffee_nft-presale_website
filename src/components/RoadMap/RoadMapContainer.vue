@@ -7,8 +7,18 @@
         :data="item"
       />
     </div>
-    <img id="cake" class="foods" src="@/assets/images/game-itens/Food1.webp" />
-    <img id="pastel" class="foods" src="@/assets/images/game-itens/Food2.webp" />
+    <img
+      id="cake"
+      class="foods"
+      src="@/assets/images/game-itens/Food1.webp"
+      alt="food backdrop icon"
+    />
+    <img
+      id="pastel"
+      class="foods"
+      src="@/assets/images/game-itens/Food2.webp"
+      alt="food backdrop icon"
+    />
   </div>
 </template>
 

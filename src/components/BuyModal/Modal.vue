@@ -63,7 +63,7 @@
           </div>
         </div>
         <div v-show="transactionLoading" class="loading flex_c">
-          <div class="loader"><img src="/favicon/favicon.png" /></div>
+          <div class="loader"><img src="/favicon/favicon.png" alt="page logo"/></div>
           <p class="warn">{{ loadingPhrases[loadingPhraseIndex] }}</p>
         </div>
         <div class="actions grid">

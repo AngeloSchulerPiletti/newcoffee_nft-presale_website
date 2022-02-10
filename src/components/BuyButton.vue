@@ -2,9 +2,13 @@
   <div id="buy-container" class="flex_c">
     <span class="warn" v-if="connection == 'not-available'"
       >Install the
-      <a target="_blank" href="https://metamask.io/">MetaMask wallet</a> to proceed</span
+      <a target="_blank" href="https://metamask.io/">MetaMask wallet</a> to
+      proceed</span
     >
-    <button :class="`in buy-button pseudo-1 title-1 ${connection}`" @click="buyModal">
+    <button
+      :class="`in buy-button pseudo-1 title-1 ${connection}`"
+      @click="buyModal"
+    >
       buy chest
     </button>
     <button
@@ -37,13 +41,15 @@ export default defineComponent({
       this.connection == "connected" ? this.$store.commit("openModal") : null;
     },
     async connectWallet() {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      this.connection = "not-connected";
-      if (accounts && accounts[0]) {
-        this.$store.commit("setWalletAddress", accounts[0]);
-        this.connection = "connected";
+      if (this.hasMetaMask) {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        this.connection = "not-connected";
+        if (accounts && accounts[0]) {
+          this.$store.commit("setWalletAddress", accounts[0]);
+          this.connection = "connected";
+        }
       }
     },
   },

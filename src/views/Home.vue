@@ -100,14 +100,15 @@ export default defineComponent({
         return true;
       }
       import("web3").then((web3Module) => {
-        if (window.ethereum && window.ethereum.isMetaMask) {
-          this.$store.commit("setHasMetaMask", true);
-          this.web3Instance = new web3Module.default(window.ethereum);
-        }
+        this.web3Instance = new web3Module.default(window.ethereum);
       });
     },
   },
   mounted() {
+    if (window.ethereum && window.ethereum.isMetaMask) {
+      this.$store.commit("setHasMetaMask", true);
+    }
+
     setTimeout(() => {
       this.secondaryLoads = true;
     }, 2000);

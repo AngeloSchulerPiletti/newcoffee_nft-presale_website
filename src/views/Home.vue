@@ -2,7 +2,7 @@
   <div class="home flex_c">
     <presentation><logo-component /></presentation>
     <instruction-cards-container />
-    <buy-button :web3="web3Instance" v-if="!isSmallScreen" />
+    <buy-button :web3="web3Instance" v-if="!isMobile" />
     <h6 v-else id="go-to-desktop" class="title-2 shadow-3 pseudo-2 no-content">
       To buy your chest, open it on your desktop
     </h6>
@@ -83,8 +83,14 @@ export default defineComponent({
     "buy-modal": Modal,
   },
   computed: {
-    isSmallScreen() {
-      return window.innerWidth < 800;
+    isMobile() {
+      return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
+          navigator.userAgent
+        ) ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform) ||
+        window.innerWidth < 400
+      );
     },
   },
   mounted() {

@@ -2,7 +2,7 @@
   <header class="flex_r">
     <img
       class="shadow-3"
-      src="@/assets/images/transparent-logo.png"
+      src="@/assets/images/transparent-logo.webp"
       alt="logo da new coffee"
     />
   </header>

@@ -1,16 +1,16 @@
 [
     {
-        "imageName": "caixa1.png",
+        "imageName": "caixa1.webp",
         "price": "20,00",
         "type": "standart"
     },
     {
-        "imageName": "caixa3.png",
+        "imageName": "caixa3.webp",
         "price": "100,00",
         "type": "legendary"
     },
     {
-        "imageName": "caixa2.png",
+        "imageName": "caixa2.webp",
         "price": "50,00",
         "type": "rare"
     }

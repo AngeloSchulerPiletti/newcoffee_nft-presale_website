@@ -5,25 +5,25 @@
         <img
           key="0"
           v-show="imageToShow == 0"
-          src="/images/game-prints/print-cafe-1.png"
+          src="/images/game-prints/print-cafe-1.webp"
           alt="Imagem do jogo"
         />
         <img
           key="1"
           v-show="imageToShow == 1"
-          src="/images/game-prints/print-mineracao-1.png"
+          src="/images/game-prints/print-mineracao-1.webp"
           alt="Imagem do jogo"
         />
         <img
           key="2"
           v-show="imageToShow == 2"
-          src="/images/game-prints/print-2.png"
+          src="/images/game-prints/print-2.webp"
           alt="Imagem do jogo"
         />
         <img
           key="3"
           v-show="imageToShow == 3"
-          src="/images/game-prints/print-cafe-2.png"
+          src="/images/game-prints/print-cafe-2.webp"
           alt="Imagem do jogo"
         />
       </transition-group>

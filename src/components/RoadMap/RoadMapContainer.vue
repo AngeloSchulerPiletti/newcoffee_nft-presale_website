@@ -7,8 +7,8 @@
         :data="item"
       />
     </div>
-    <img id="cake" class="foods" src="@/assets/images/game-itens/Food1.png" />
-    <img id="pastel" class="foods" src="@/assets/images/game-itens/Food2.png" />
+    <img id="cake" class="foods" src="@/assets/images/game-itens/Food1.webp" />
+    <img id="pastel" class="foods" src="@/assets/images/game-itens/Food2.webp" />
   </div>
 </template>
 

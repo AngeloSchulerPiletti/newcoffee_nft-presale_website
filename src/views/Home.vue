@@ -15,11 +15,13 @@
       v-if="tertiaryLoads"
       id="chicken"
       class="foods"
-      src="@/assets/images/game-itens/food13.png"
+      src="@/assets/images/game-itens/food13.webp"
+      alt="food icon"
     />
     <!-- MODALS -->
-    <feedback-container />
-    <buy-modal :web3="web3Instance" />
+    <feedback-container v-if="!isMobile" />
+    <!-- Colocar async import pra isso -->
+    <buy-modal :web3="web3Instance" v-if="!isMobile && secondaryLoads" />
   </div>
 </template>
 
@@ -28,18 +30,18 @@ import { defineComponent, defineAsyncComponent } from "vue";
 import LogoComponent from "@/components/LogoComponent.vue";
 import Presentation from "@/components/Presentation.vue";
 import InstructionCardsContainer from "@/components/Instructions/InstructionCardsContainer.vue";
-import BuyButton from "@/components/BuyButton.vue";
+// import BuyButton from "@/components/BuyButton.vue";
 // import RoadMapContainer from "@/components/RoadMap/RoadMapContainer.vue";
 // import TeamCardsContainer from "@/components/Team/TeamCardsContainer.vue";
 // import ContactTheTeam from "@/components/ContactTheTeam.vue";
 // import FooterComponent from "@/components/FooterComponent.vue";
 // import CarouselImages from "@/components/CarouselImages.vue";
-import Modal from "@/components/BuyModal/Modal.vue";
-import FeedbackContainer from "@/components/Feedback/FeedbackContainer.vue";
-import Web3 from "web3";
+// import Modal from "@/components/BuyModal/Modal.vue";
+// import FeedbackContainer from "@/components/Feedback/FeedbackContainer.vue";
+// import Web3 from "web3";
 
 declare interface HomeData {
-  web3Instance: Web3 | null;
+  web3Instance?: any | null;
   animation: {
     team: boolean;
   };
@@ -63,7 +65,7 @@ export default defineComponent({
     LogoComponent,
     Presentation,
     InstructionCardsContainer,
-    BuyButton,
+    BuyButton: defineAsyncComponent(() => import("@/components/BuyButton.vue")),
     CarouselImages: defineAsyncComponent(
       () => import("@/components/CarouselImages.vue")
     ),
@@ -79,18 +81,30 @@ export default defineComponent({
     FooterComponent: defineAsyncComponent(
       () => import("@/components/FooterComponent.vue")
     ),
-    FeedbackContainer,
-    "buy-modal": Modal,
+    FeedbackContainer: defineAsyncComponent(
+      () => import("@/components/Feedback/FeedbackContainer.vue")
+    ),
+    "buy-modal": defineAsyncComponent(
+      () => import("@/components/BuyModal/Modal.vue")
+    ),
   },
   computed: {
     isMobile() {
-      return (
+      if (
         /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(
           navigator.userAgent
         ) ||
         /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform) ||
         window.innerWidth < 400
-      );
+      ) {
+        return true;
+      }
+      import("web3").then((web3Module) => {
+        if (window.ethereum && window.ethereum.isMetaMask) {
+          this.$store.commit("setHasMetaMask", true);
+          this.web3Instance = new web3Module.default(window.ethereum);
+        }
+      });
     },
   },
   mounted() {
@@ -113,12 +127,6 @@ export default defineComponent({
         });
       }, 100);
     }, 3500);
-
-    this.$store.commit("setHasMetaMask", false);
-    if (window.ethereum && window.ethereum.isMetaMask) {
-      this.$store.commit("setHasMetaMask", true);
-      this.web3Instance = new Web3(window.ethereum);
-    }
   },
 });
 </script>

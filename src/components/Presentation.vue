@@ -21,6 +21,7 @@
       <video
         src="@/assets/videos/trailer-example-720.mp4"
         autoplay
+        playsinline
         loop
         muted
       ></video>

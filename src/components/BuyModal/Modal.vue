@@ -63,7 +63,9 @@
           </div>
         </div>
         <div v-show="transactionLoading" class="loading flex_c">
-          <div class="loader"><img src="/favicon/favicon.png" alt="page logo"/></div>
+          <div class="loader">
+            <img src="/favicon/favicon.png" alt="page logo" />
+          </div>
           <p class="warn">{{ loadingPhrases[loadingPhraseIndex] }}</p>
         </div>
         <div class="actions grid">
@@ -132,7 +134,7 @@ export default defineComponent({
         "Sending Transaction",
         "Waiting for approval",
         "Finishing the sale",
-        "Almost there"
+        "Almost there",
       ],
       loadingPhraseIndex: 0,
     };
@@ -200,28 +202,35 @@ export default defineComponent({
             ).toString()
           );
 
-          this.transactionLoading = true;
-          this.web3!.eth.sendTransaction({
-            from: this.$store.state.walletAddress,
+          this.web3!.eth.estimateGas({
+            form: this.$store.state.walletAddress,
             to: this.$store.state.newcoffeeAddress,
-            value: BNBPrice, // "0000020000000000000", // BNBPrice, //
-          })
-            .then((res: any) => {
-              this.transactionLoading = false;
-              this.closeModal(true);
-              this.$store.commit("addFeedback", {
-                description: "Your chest is being sent to our stock",
-                isError: false,
-              });
+            value: BNBPrice,
+          }).then((gas: any) => {
+            this.transactionLoading = true;
+            this.web3!.eth.sendTransaction({
+              from: this.$store.state.walletAddress,
+              to: this.$store.state.newcoffeeAddress,
+              value: BNBPrice, // "0000020000000000000", // BNBPrice, //
+              gasPrice: 1.05*gas,
             })
-            .catch((err: any) => {
-              this.transactionLoading = false;
-              this.apiError = true;
-              this.$store.commit("addFeedback", {
-                description: "There is a problem with your wallet",
-                isError: true,
+              .then((res: any) => {
+                this.transactionLoading = false;
+                this.closeModal(true);
+                this.$store.commit("addFeedback", {
+                  description: "Your chest is being sent to our stock",
+                  isError: false,
+                });
+              })
+              .catch((err: any) => {
+                this.transactionLoading = false;
+                this.apiError = true;
+                this.$store.commit("addFeedback", {
+                  description: "There is a problem with your wallet",
+                  isError: true,
+                });
               });
-            });
+          });
         })
         .catch((err) => {
           this.apiError = true;

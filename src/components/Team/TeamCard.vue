@@ -7,10 +7,10 @@
       />
     </div>
     <div class="content flex_c">
-      <h6 class="flex_c">
+      <p class="flex_c">
         {{ cardData?.name }}
         <span class="role">{{ cardData?.role }}</span>
-      </h6>
+      </p>
     </div>
   </div>
 </template>
@@ -53,10 +53,11 @@ $border: 8px;
     }
   }
   .content {
-    h6 {
+    p {
       text-align: center;
       padding: 20px;
       font-size: 24px;
+      font-family: "Supermercado One", cursive;
 
       .role {
         font-size: 0.6em;

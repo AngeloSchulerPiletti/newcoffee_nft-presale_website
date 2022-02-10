@@ -3,12 +3,12 @@
     <img
       id="donnut"
       class="foods"
-      src="@/assets/images/game-itens/food18.png"
+      src="@/assets/images/game-itens/food18.webp"
     />
     <img
       id="hotdog"
       class="foods"
-      src="@/assets/images/game-itens/food11.png"
+      src="@/assets/images/game-itens/food11.webp"
     />
 
     <div class="header"><slot></slot></div>
@@ -21,7 +21,6 @@
       <video
         src="@/assets/videos/trailer-example-720.mp4"
         autoplay
-        playsinline
         loop
         muted
       ></video>
@@ -67,6 +66,10 @@ export default {
         }, 1);
       }
     },
+  },
+  mounted() {
+    var video = this.$el.querySelector("video");
+    video.play();
   },
   components: {
     MouseScroll,
